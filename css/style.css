@@ -18,7 +18,7 @@ margin: 0 auto;
 }
 .cardContainer div{
     width: 960px;
-    background-color: rgb(240, 175, 78);
+    background-color: rgb(240, 212, 89);
     padding: 30px;
     margin: 20px;
     color: white;
@@ -75,11 +75,13 @@ li {
 }
 
  .userName{
-    background-color: rgb(204, 176, 53);
+    background-color: rgb(240, 212, 89);
     padding: 20px;
     margin: 20px;
     color: white;
     font-size: 20px;
+    box-shadow: 6px 6px 31px 5px rgba(179,132,38,1);
+    border-radius: 10px;
 }
 
 footer {
