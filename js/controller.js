@@ -10,6 +10,16 @@ const init = () => {
         })
 }
 
+const initAuthorsPage = () => {
+    console.log("ready")
+
+    data.fetchUsers()
+        .then(userList => {
+            ui.displayUsers(userList)
+        })
+}
+
 export {
     init,
+    initAuthorsPage
 }

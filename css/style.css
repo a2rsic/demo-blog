@@ -69,6 +69,19 @@ li {
     padding: 20px;
 }
 
+.userContainer {
+    width: 960px;
+    margin:  0 auto;
+}
+
+ .userName{
+    background-color: rgb(204, 176, 53);
+    padding: 20px;
+    margin: 20px;
+    color: white;
+    font-size: 20px;
+}
+
 footer {
     background-color: orange;
     position: fixed;

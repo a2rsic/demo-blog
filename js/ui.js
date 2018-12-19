@@ -1,4 +1,4 @@
-const $mainContainer = $(".mainContainer");
+const $userContainer = $(".userContainer");
 const $cardContainer = $(".cardContainer")
 
 const displayPosts = (postList) => {
@@ -19,6 +19,22 @@ const displayPosts = (postList) => {
     }
 }
 
+const displayUsers = (userList) => {
+    for(let i = 0; i < userList.length; i++ ){
+        const $divCardUser = $("<div>");
+        const $p = $("<p>");
+        $p.attr("class", "userName")
+
+        const userName = userList[i].name;
+
+        $p.text(userName);
+        $divCardUser.append($p);
+        $userContainer.append($divCardUser);
+    }
+
+}
+
 export {
     displayPosts,
+    displayUsers
 }
