@@ -12,6 +12,20 @@
 width: 960px;
 margin: 0 auto;
 }
+.cardContainer {
+    margin: 0 auto;
+    width: 960px;
+}
+.cardContainer div{
+    width: 960px;
+    background-color: rgb(240, 175, 78);
+    padding: 30px;
+    margin: 20px;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 6px 6px 31px 5px rgba(179,132,38,1);
+
+}
 
 #link-bit-blog {
 font-size: 28px;
@@ -36,12 +50,28 @@ ul {
 li {
     list-style-type: none;
     display: inline;
-    /* justify-content: flex-end; */
+}
+
+.about-title {
+    text-align: center;
+    padding: 20px;
+    color: darkorange;
+}
+
+.index-title {
+    text-align: center;
+    color: darkorange;
+    padding: 20px;
+}
+.authors-title {
+    text-align: center;
+    color: darkorange;
+    padding: 20px;
 }
 
 footer {
     background-color: orange;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
 }
