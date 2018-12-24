@@ -18,12 +18,12 @@ margin: 0 auto;
 }
 .cardContainer div{
     width: 960px;
-    background-color: rgb(240, 212, 89);
+    background-color:bisque;
     padding: 30px;
-    margin: 20px;
-    color: white;
-    border-radius: 10px;
-    box-shadow: 6px 6px 31px 5px rgba(179,132,38,1);
+    margin: 10px;
+    color: burlywood;
+    /* border-radius: 10px; */
+    /* box-shadow: 6px 6px 31px 5px rgba(179,132,38,1); */
 
 }
 
@@ -36,6 +36,14 @@ a {
     color: white;
     padding: 10px;
     font-size: 18px;
+}
+.user-link {
+    color: burlywood;
+}
+
+.div-display-user {
+    background-color: bisque;
+    padding: 20px;
 }
 
 .link-hover:hover {
@@ -74,7 +82,7 @@ li {
     margin:  0 auto;
 }
 
- .userName{
+.userName{
     background-color: rgb(240, 212, 89);
     padding: 20px;
     margin: 20px;
