@@ -1,5 +1,5 @@
-import Post from "../entities/Post.js";
-import User from "../entities/User.js";
+import Post from "./entities/Post.js";
+import User from "./entities/User.js";
 
 const fetchPosts = () => {
     const urlPosts = "https://jsonplaceholder.typicode.com/posts";
@@ -13,7 +13,7 @@ const fetchPosts = () => {
             console.log(slicePostList);
 
             const postList = slicePostList.map(post => {
-                return new Post(post.id, post.body, post.title)
+                return new Post(post.id, post.body, post.title, post.userId)
             })
             // for (let i = 0; i < slicePostList.length; i++) {
 
@@ -34,7 +34,7 @@ const fetchUsers = () => {
             console.log(listOfUsers);
 
             const userList = listOfUsers.map(user => {
-                return new User(user.id, user.name)
+                return new User(user.id, user.name, user.username, user.email, user.phone)
             })
             // for (let i = 0; i < listOfUsers.length; i++) {
 
@@ -47,14 +47,32 @@ const fetchUsers = () => {
         })
 }
 
+const fetchUser = (id) => {
+    const urlUser = "https://jsonplaceholder.typicode.com/users/" + `${id}`;
+
+    return fetch(urlUser)
+        .then(response => response.json())
+        .then(response => {
+           return response;
+        })
+}
+
+const setUserId = (id) => {
+    localStorage.setItem("user-id", id)
+}
+
+const catchUserId = () => {
+    const user_id = localStorage.getItem("user-id");
+
+    return user_id;
+}
+
 const savePostId = (postId) => {
-    // console.log(event);
-    // const postId = event.target.dataset.id;
-    localStorage.setItem("id", postId)
+    localStorage.setItem("postId", postId)
 }
 
 const getPostId = () => {
-    const postId = localStorage.getItem("id");
+    const postId = localStorage.getItem("postId");
 
     return postId;
 }
@@ -64,14 +82,43 @@ const fetchPost = (id) => {
     return fetch(urlPost)
         .then(response => response.json())
         .then(response => {
-            console.log(response)
+            return response
         })
 }
+
+const saveUserId = (userId) => {
+    localStorage.setItem("userId", userId)
+}
+
+const getUserId = () => {
+    const userId = localStorage.getItem("userId");
+    return userId;
+}
+
+const fetchUserById = (userId) => {
+    const urlUserId = "https://jsonplaceholder.typicode.com/posts?" + `${userId}`;
+
+    return fetch(urlUserId)
+        .then(response => response.json())
+        .then(userArray => {
+           const myUserId = userArray.map( post => {
+               return new Post(null, null, null, post.userId)
+           })
+           return myUserId;
+        })
+}
+
 
 export {
     fetchPosts,
     fetchUsers,
     fetchPost,
     savePostId,
-    getPostId
+    getPostId,
+    fetchUserById,
+    saveUserId,
+    getUserId,
+    fetchUser,
+    setUserId,
+    catchUserId
 }

@@ -4,13 +4,14 @@
     box-sizing: border-box;
 }
 .container-fluid {
+    /* width: 100%; */
     background-color: orange;
     padding: 20px;
     /* margin: 0 auto; */
 }
 .container {
-width: 960px;
-margin: 0 auto;
+    width: 50%;
+    margin: 0 auto;
 }
 .cardContainer {
     margin: 0 auto;
@@ -27,8 +28,40 @@ margin: 0 auto;
 
 }
 
+.singlePostDiv {
+    width: 960px;
+    margin: 0 auto;
+    height: 500px;
+    color: orange;
+    /* background-color: bisque; */
+}
+
+.singlePostTitle {
+    text-align: center;
+    padding: 20px;
+}
+
+.singlePostBody {
+    padding: 30px;
+    color: burlywood;
+}
+
+.relatedLinksTitle {
+    width: 960px;
+    margin: 0 auto;
+    padding: 30px;
+    color: rgb(202, 144, 17);
+}
+
+.relatedLinks {
+    width: 960px;
+    margin: 0 auto;
+    color: blue;
+    display: block;
+}
+
 #link-bit-blog {
-font-size: 28px;
+    font-size: 28px;
 }
 
 a {
@@ -92,6 +125,34 @@ li {
     border-radius: 10px;
 }
 
+.userInfo {
+    width: 960px;
+    height: 200px;
+    margin: 0 auto;
+    /* background-color: bisque; */
+    padding: 20px;
+    border-bottom: 2px solid tomato;
+    color: orange;
+    vertical-align: middle;
+}
+
+.userInfoParagraph{
+    padding: 10px;
+    font-size: 20px;
+    
+}
+#authorTitle {
+    text-align: center;
+    color: orange;
+    padding: 20px;
+}
+  #about-paragraph {
+    width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+ }
+
+
 footer {
     background-color: orange;
     position: fixed;
@@ -103,4 +164,80 @@ footer p {
     color: white;
     text-align: center;
     padding: 10px;
+    margin: 0 auto;
 }
+
+@media  (min-width: 576px) {
+ 
+    .container {
+        width: 100%;
+        margin: 0 auto;
+        }
+
+        .cardContainer div{
+            width: 57%;
+        }
+
+        .singlePostDiv {
+            width: 100%;
+        }
+
+        .userContainer {
+            width: 90%;
+        }
+
+        #about-paragraph {
+            width: 100%;
+            line-height: 25px;
+            
+         }
+
+         .userInfo {
+            width: 80%;
+      
+        }
+
+        footer  {
+           width: 60%;
+        }
+}
+
+@media (min-width:  768px) {
+     .cardContainer div{
+        width: 78%;
+    }
+
+    .singlePostDiv {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    footer  {
+        width: 100%;
+     }
+
+  
+}
+
+/* @media (min-width: 992px) {
+    .container-fluid {
+     width: 100%;
+    }
+
+    .index-title {
+        width: 100%;
+        
+    }
+
+    .cardContainer div{
+        width: 100%;
+        margin: 0;
+     
+    }
+
+    footer {
+        width: 100%;
+     }
+
+    
+} */
