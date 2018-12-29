@@ -49,15 +49,16 @@ const initSinglePostPage = () => {
     data.fetchPost(postId)
         .then(post => {
             ui.displaySinglePost(post)
-            ui.displayRelatedLinks(post)
+            // ui.displayRelatedLinks(post)
         });
-    const userId = data.getUserId()
-    data.fetchUserById(userId)
-        .then(myUserId => {
-            // console.log("My", myUserId);
-            ui.displayUserLink(myUserId)
-        })
 
+    const userId = data.getUserId();
+
+    data.fetchRelatedLinks(userId)
+        .then(relatedLinks => {
+            console.log("my response", relatedLinks);
+            ui.displayRelatedLinks(relatedLinks)
+        })
 }
 
 const initSingleAuthorPage = () => {

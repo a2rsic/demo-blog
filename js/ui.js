@@ -2,7 +2,7 @@ const $userContainer = $(".userContainer");
 const $cardContainer = $(".cardContainer");
 const $singlePostContainer = $(".single-post-container");
 const $singleAuthorContainer = $(".singleAuthorContainer");
-// const $singlePostDiv = $(".singlePostDiv")
+const $relatedLinksDiv = $(".relatedLinksDiv");
 
 
 const displayPosts = (postList) => {
@@ -101,16 +101,16 @@ const createUserLink = (user) => {
     `)
 }
 
-const displayRelatedLinks = (post) => {
-    $singlePostContainer.append(createRelatedLinks(post))
+const displayRelatedLinks = (relatedLinks) => {
+    relatedLinks.forEach(post => {
+
+        $relatedLinksDiv.append(createRelatedLinks(post))
+    })
 }
 
 const createRelatedLinks = (post) => {
     return $(`
-    <h3 class="relatedLinksTitle">Related Links</h3>
-    <a  class="relatedLinks" href="singlePostPage">${post.title}</a>
-    <a  class="relatedLinks" href="singlePostPage">${post.title}</a>
-    <a  class="relatedLinks" href="singlePostPage">${post.title}</a> 
+    <a  class="relatedLinks" href="singlePostPage.html">${post.title}</a>
     `)
 }
 

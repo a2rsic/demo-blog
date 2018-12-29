@@ -4,36 +4,45 @@
     box-sizing: border-box;
 }
 .container-fluid {
-    /* width: 100%; */
+    width: 100%;
     background-color: orange;
     padding: 20px;
-    /* margin: 0 auto; */
 }
 .container {
-    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
     margin: 0 auto;
 }
-.cardContainer {
+
+.mainWrapper {
+    width: 100%;
     margin: 0 auto;
-    width: 960px;
+}
+
+.cardContainer {
+    width: 80%;
+    margin: 0 auto;
 }
 .cardContainer div{
-    width: 960px;
-    background-color:bisque;
+    width: 100%;
     padding: 30px;
-    margin: 10px;
     color: burlywood;
-    /* border-radius: 10px; */
-    /* box-shadow: 6px 6px 31px 5px rgba(179,132,38,1); */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.cardContainer div:hover {
+    box-shadow: 0 4px 8px 0 rosybrown, 0 6px 20px 0 rosybrown;
 
 }
 
 .singlePostDiv {
-    width: 960px;
+    width: 80%;
     margin: 0 auto;
-    height: 500px;
     color: orange;
-    /* background-color: bisque; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding-top: 20px;
 }
 
 .singlePostTitle {
@@ -42,29 +51,40 @@
 }
 
 .singlePostBody {
+    font-size: 1.3em;
+}
+
+.singlePostBody {
     padding: 30px;
     color: burlywood;
 }
 
 .relatedLinksTitle {
-    width: 960px;
+    width: 80%;
     margin: 0 auto;
     padding: 30px;
     color: rgb(202, 144, 17);
 }
 
 .relatedLinks {
-    width: 960px;
+    width: 80%;
     margin: 0 auto;
     color: blue;
     display: block;
 }
 
+.relatedLinks:hover {
+    text-decoration: underline;
+}
+
+
 #link-bit-blog {
     font-size: 28px;
+    display: inline;
 }
 
 a {
+    display: block;
     text-decoration: none;
     color: white;
     padding: 10px;
@@ -75,22 +95,37 @@ a {
 }
 
 .div-display-user {
-    background-color: bisque;
     padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.div-display-user:hover {
+    box-shadow: 0 4px 8px 0 rosybrown, 0 6px 20px 0 rosybrown;
+
 }
 
 .link-hover:hover {
     background-color: darkorange;
 }
 
-ul {
-    display: inline;
-    float: right;
+.nav-list {
+    margin-top: 1.1em;
+    /* display: inline; */
+    /* float: right; */
 }
 
 li {
     list-style-type: none;
     display: inline;
+}
+
+.link-hover {
+    display: inline;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    font-size: 18px;
 }
 
 .about-title {
@@ -111,8 +146,13 @@ li {
 }
 
 .userContainer {
-    width: 960px;
+    width: 100%;
     margin:  0 auto;
+}
+
+.div-display-user {
+    width: 80%;
+    margin: 0 auto;
 }
 
 .userName{
@@ -126,14 +166,12 @@ li {
 }
 
 .userInfo {
-    width: 960px;
-    height: 200px;
+    width: 80%;
     margin: 0 auto;
-    /* background-color: bisque; */
     padding: 20px;
-    border-bottom: 2px solid tomato;
     color: orange;
-    vertical-align: middle;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 .userInfoParagraph{
@@ -147,9 +185,12 @@ li {
     padding: 20px;
 }
   #about-paragraph {
-    width: 960px;
+    width: 80%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: burlywood;
+
  }
 
 
@@ -168,16 +209,17 @@ footer p {
 }
 
 @media  (min-width: 576px) {
- 
-    .container {
+
+    .container-fluid {
         width: 100%;
-        margin: 0 auto;
-        }
+    }
+ 
+    
 
-        .cardContainer div{
-            width: 57%;
-        }
-
+        /* .nav-list {
+            width: 50%;
+        } */
+/* 
         .singlePostDiv {
             width: 100%;
         }
@@ -199,10 +241,10 @@ footer p {
 
         footer  {
            width: 60%;
-        }
+        } */
 }
 
-@media (min-width:  768px) {
+/* @media (min-width:  768px) {
      .cardContainer div{
         width: 78%;
     }
@@ -217,7 +259,7 @@ footer p {
      }
 
   
-}
+}  */
 
 /* @media (min-width: 992px) {
     .container-fluid {

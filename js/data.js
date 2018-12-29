@@ -95,18 +95,25 @@ const getUserId = () => {
     return userId;
 }
 
-const fetchUserById = (userId) => {
-    const urlUserId = "https://jsonplaceholder.typicode.com/posts?" + `${userId}`;
+const fetchRelatedLinks = (userId) => {
+    const urlUserId = "https://jsonplaceholder.typicode.com/posts?userId=" + `${userId}`;
 
     return fetch(urlUserId)
         .then(response => response.json())
         .then(userArray => {
-           const myUserId = userArray.map( post => {
-               return new Post(null, null, null, post.userId)
+           const relatedLinks = userArray.map( post => {
+               return new Post(post.id, post.body, post.title, post.userId)
            })
-           return myUserId;
+           return relatedLinks;
         })
-}
+
+    }
+    // const checkUserId = () => {
+    //     const userIdValue = getUserId();
+        
+    //     if()
+    // }
+
 
 
 export {
@@ -115,7 +122,7 @@ export {
     fetchPost,
     savePostId,
     getPostId,
-    fetchUserById,
+    fetchRelatedLinks,
     saveUserId,
     getUserId,
     fetchUser,
