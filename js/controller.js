@@ -19,7 +19,11 @@ const init = () => {
                 data.savePostId(postId);
 
                 const userId = event.currentTarget.attributes[1].value;
-                data.saveUserId(userId)
+                data.saveUserId(userId);
+
+                const user_id = event.currentTarget.attributes[1].value;
+                data.setUserId(user_id);
+                
             })
         })
 }
@@ -49,16 +53,22 @@ const initSinglePostPage = () => {
     data.fetchPost(postId)
         .then(post => {
             ui.displaySinglePost(post)
-            // ui.displayRelatedLinks(post)
         });
 
     const userId = data.getUserId();
 
     data.fetchRelatedLinks(userId)
         .then(relatedLinks => {
-            console.log("my response", relatedLinks);
             ui.displayRelatedLinks(relatedLinks)
-        })
+        });
+
+        const user_id = data.getUserId()
+
+        data.fetchUser(user_id)
+            .then(userLink => {
+                console.log("my response", userLink);
+                ui.displayUserLink(userLink)
+            })
 }
 
 const initSingleAuthorPage = () => {

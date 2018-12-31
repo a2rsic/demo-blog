@@ -3,6 +3,7 @@ const $cardContainer = $(".cardContainer");
 const $singlePostContainer = $(".single-post-container");
 const $singleAuthorContainer = $(".singleAuthorContainer");
 const $relatedLinksDiv = $(".relatedLinksDiv");
+const $userLinkDiv = $(".userLinkDiv")
 
 
 const displayPosts = (postList) => {
@@ -29,7 +30,7 @@ const displayPosts = (postList) => {
 
 const createPostCard = (post) => {
     return $(`
-        <a data-id="${post.id}" data-userId=${post.userId} class="post-id-div" href="singlePostPage.html" >
+        <a data-id="${post.id}" data-userId=${post.userId} href="singlePostPage.html" class="post-id-div">
             <div>
                 <h3>${post.title}</h3>
                 <p>${post.body}</p>
@@ -84,20 +85,26 @@ const displaySinglePost = (post) => {
 
 const createSinglePost = (post) => {
     return $(`
-    <div class="singlePostDiv">
+    
+    <div>
      <h1 class="singlePostTitle">${post.title}</h1>
+     </div>
+    <div>
      <p class="singlePostBody">${post.body}</p> 
-    </div>
+     </div>
+    
     `)
 }
 
-const displayUserLink = (user) => {
-    $singlePostContainer.append(createUserLink(user))
+const displayUserLink = (userLink) => {
+    $singlePostContainer.append(createUserLink(userLink))
 }
 
 const createUserLink = (user) => {
     return $(`
-    <a href="singleAuthorPage">${user.name}</a>
+    <div class="userLinkDiv">
+        <a id="userLink" href="singleAuthorPage.html">${user.name}</a>
+    </div>
     `)
 }
 
