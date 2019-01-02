@@ -1,5 +1,6 @@
 import Post from "./entities/Post.js";
 import User from "./entities/User.js";
+import Comment from "./entities/Comment.js";
 
 const fetchPosts = () => {
     const urlPosts = "https://jsonplaceholder.typicode.com/posts";
@@ -108,6 +109,20 @@ const fetchRelatedLinks = (userId) => {
         })
 
     }
+
+    const fetchComments = (postId) => {
+        const urlComments = "https://jsonplaceholder.typicode.com/comments?postId=" + `${postId}`;
+
+        return fetch(urlComments)
+            .then(response => response.json())
+            .then(commentsArray => {
+                const comment = commentsArray.map( comment => {
+                    const { postId, name, body, email } = comment;
+                    return new Comment(postId, name, body, email);
+                })
+                return comment;
+            })
+    }
     // const checkUserId = () => {
     //     const userIdValue = getUserId();
         
@@ -127,5 +142,6 @@ export {
     getUserId,
     fetchUser,
     setUserId,
-    catchUserId
+    catchUserId,
+    fetchComments
 }

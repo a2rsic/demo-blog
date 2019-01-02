@@ -3,6 +3,13 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+    }
+    
 .container-fluid {
     width: 100%;
     background-color: orange;
@@ -16,14 +23,10 @@
 }
 
 .mainWrapper {
-    width: 100%;
-    margin: 0 auto;
-}
-
-.cardContainer {
     width: 80%;
     margin: 0 auto;
 }
+
 .cardContainer div{
     width: 100%;
     padding: 30px;
@@ -37,18 +40,18 @@
 
 }
 
-.single-post-container {
+ .single-post-container {
     display: flex;
     flex-direction: column;
-    width: 80%;
     margin: 0 auto;
     color: orange;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding-top: 20px;
 } 
 
+
 .userLinkDiv {
-    order: 1;
+    order: 0;
     text-align: center;
     padding: 0.8em;
 }
@@ -68,14 +71,11 @@
 }
 
 .relatedLinksTitle {
-    width: 80%;
-    margin: 0 auto;
-    padding: 30px;
+    padding: 30px 30px 20px 10px;
     color: rgb(202, 144, 17);
 }
 
 .relatedLinks {
-    width: 80%;
     margin: 0 auto;
     color: blue;
     display: block;
@@ -136,10 +136,6 @@ li {
     font-size: 18px;
 }
 
-.aboutContainer {
-    width: 100%;
-}
-
 .about-title {
     text-align: center;
     padding: 20px;
@@ -157,15 +153,6 @@ li {
     padding: 20px;
 }
 
-.userContainer {
-    width: 100%;
-    margin:  0 auto;
-}
-
-.div-display-user {
-    width: 80%;
-    margin: 0 auto;
-}
 
 #userLink {
     color: blue;
@@ -202,21 +189,54 @@ li {
     padding: 20px;
 }
   #about-paragraph {
-    width: 80%;
-    margin: 0 auto;
     padding: 30px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     color: burlywood;
 
  }
 
+ .commentTitle {
+    padding: 30px 0;
+    color: rgb(202, 144, 17);
+ }
+
+ .comment-div-container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+ }
+
+ .comment-div {
+     border-bottom: 2px solid grey;
+     padding: 1.5em;
+ }
+
+ .comment-user-picture {
+     width: 50px;
+ }
+
+ .comment-div h3 {
+     color: gray;
+     padding-bottom: 0.5em;
+     display: inline;
+     position: relative;
+     bottom: 20px;
+ }
+
+ .albums-title {
+  text-align: center;
+  color: orange;
+  padding: 20px;
+ }
+
 
 footer {
     background-color: orange;
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
 }
+
+
 
 footer p {
     color: white;
@@ -225,78 +245,3 @@ footer p {
     margin: 0 auto;
 }
 
-@media  (min-width: 576px) {
-
-    .container-fluid {
-        width: 100%;
-    }
- 
-    
-
-        /* .nav-list {
-            width: 50%;
-        } */
-/* 
-        .singlePostDiv {
-            width: 100%;
-        }
-
-        .userContainer {
-            width: 90%;
-        }
-
-        #about-paragraph {
-            width: 100%;
-            line-height: 25px;
-            
-         }
-
-         .userInfo {
-            width: 80%;
-      
-        }
-
-        footer  {
-           width: 60%;
-        } */
-}
-
-/* @media (min-width:  768px) {
-     .cardContainer div{
-        width: 78%;
-    }
-
-    .singlePostDiv {
-        width: 100%;
-        margin: 0 auto;
-    }
-
-    footer  {
-        width: 100%;
-     }
-
-  
-}  */
-
-/* @media (min-width: 992px) {
-    .container-fluid {
-     width: 100%;
-    }
-
-    .index-title {
-        width: 100%;
-        
-    }
-
-    .cardContainer div{
-        width: 100%;
-        margin: 0;
-     
-    }
-
-    footer {
-        width: 100%;
-     }
-
-    
-} */

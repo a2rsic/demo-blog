@@ -3,7 +3,7 @@ const $cardContainer = $(".cardContainer");
 const $singlePostContainer = $(".single-post-container");
 const $singleAuthorContainer = $(".singleAuthorContainer");
 const $relatedLinksDiv = $(".relatedLinksDiv");
-const $userLinkDiv = $(".userLinkDiv")
+const $commentDiv = $(".comment-div-container")
 
 
 const displayPosts = (postList) => {
@@ -85,14 +85,8 @@ const displaySinglePost = (post) => {
 
 const createSinglePost = (post) => {
     return $(`
-    
-    <div>
      <h1 class="singlePostTitle">${post.title}</h1>
-     </div>
-    <div>
      <p class="singlePostBody">${post.body}</p> 
-     </div>
-    
     `)
 }
 
@@ -146,6 +140,23 @@ const createUserInfo = (user) => {
     `)
 }
 
+const displayCommentCard = (commentList) => {
+    commentList.forEach(comment => {
+
+        $commentDiv.append(createCommentCard(comment))
+    })
+}
+
+const createCommentCard = (comment) => {
+    return (`
+        <div class="comment-div">
+        <img src="https://t4.ftcdn.net/jpg/01/16/06/45/240_F_116064582_KlXENacGmdt4xl8H6fQRYfSZLntLNKSX.jpg" class="comment-user-picture"/>
+        <h3>${comment.email}</h3>
+        <p>${comment.body}</p>
+        </div>
+    `)
+}
+
 // const loadContent = () => {
 //     const $loading = $(`<h3>loading...</h3>`)
 //     $('.cardContainer').append($loading)
@@ -172,5 +183,6 @@ export {
     displaySinglePost,
     displayRelatedLinks,
     displayUserInfo,
-    displayUserLink
+    displayUserLink,
+    displayCommentCard
 }

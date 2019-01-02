@@ -64,11 +64,19 @@ const initSinglePostPage = () => {
 
         const user_id = data.getUserId()
 
-        data.fetchUser(user_id)
-            .then(userLink => {
-                console.log("my response", userLink);
+    data.fetchUser(user_id)
+        .then(userLink => {
+                // console.log("my response", userLink);
                 ui.displayUserLink(userLink)
-            })
+            });
+
+
+
+    data.fetchComments(postId)
+        .then(commentList => {
+            // console.log("my comments", comment);
+            ui.displayCommentCard(commentList)
+        })
 }
 
 const initSingleAuthorPage = () => {
@@ -80,6 +88,8 @@ const initSingleAuthorPage = () => {
             ui.displayUserInfo(user)
         })
 }
+
+
 
 
 export {
