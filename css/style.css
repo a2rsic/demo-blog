@@ -4,11 +4,6 @@
     box-sizing: border-box;
 }
 
-.clearfix:after {
-    content: "";
-    clear: both;
-    display: block;
-    }
     
 .container-fluid {
     width: 100%;
