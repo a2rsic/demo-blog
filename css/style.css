@@ -3,7 +3,22 @@
     padding: 0;
     box-sizing: border-box;
 }
+html, body {
+    height: 100%;
+  }
 
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+  
+  footer {
+    flex-shrink: 0;
+  }
     
 .container-fluid {
     width: 100%;
