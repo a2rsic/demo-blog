@@ -129,13 +129,22 @@ a {
 
 .nav-list {
     margin-top: 1.1em;
+    float: right!important;
+    display: flex;
+    flex-direction: row;
     /* display: inline; */
     /* float: right; */
 }
 
+#link-bit-blog {
+    display: flex;
+    flex-direction: row;
+}
+
 li {
     list-style-type: none;
-    display: inline;
+    /* display: inline; */
+    /* float: left; */
 }
 
 .link-hover {
@@ -221,11 +230,17 @@ li {
  }
  
   .comment-list {
+      width: 100%;
      border: 1px solid #e0e0e0;
      border-radius: 2px;
      overflow: hidden;
      position: relative;
-     padding: 1em;
+     /* padding: 1em; */
+  }
+
+  .comment-content {
+      width: 100%;
+      padding: 1em;
   }
 
   .comment-content span {
