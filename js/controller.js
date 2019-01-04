@@ -23,7 +23,7 @@ const init = () => {
 
                 const user_id = event.currentTarget.attributes[1].value;
                 data.setUserId(user_id);
-                
+
             })
         })
 }
@@ -59,24 +59,31 @@ const initSinglePostPage = () => {
 
     data.fetchRelatedLinks(userId)
         .then(relatedLinks => {
-            ui.displayRelatedLinks(relatedLinks)
+
+            console.log("related Links", relatedLinks);
+            ui.displayRelatedLinks(relatedLinks);
+
+            $(".relatedLinks").on("click", event => {
+                console.log("my event", event);
+
+                const postId = event.currentTarget.attributes[0].value;
+                data.savePostId(postId)
+            })
         });
 
-        const user_id = data.getUserId()
+    const user_id = data.getUserId()
 
     data.fetchUser(user_id)
         .then(userLink => {
-                // console.log("my response", userLink);
-                ui.displayUserLink(userLink)
-            });
-
-
+            // console.log("my response", userLink);
+            // ui.displaySinglePost(userLink)
+        });
 
     data.fetchComments(postId)
         .then(commentList => {
             // console.log("my comments", comment);
             ui.displayCommentCard(commentList)
-        })
+        });
 }
 
 const initSingleAuthorPage = () => {

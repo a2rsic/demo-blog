@@ -12,21 +12,6 @@ const displayPosts = (postList) => {
         $cardContainer.append(createPostCard(post))
     })
 }
-// for(let i = 0; i < postList.length; i++){
-//     const $divCard = $("<div>")
-//     const $title = $("<h3>")
-//     const $p = $("<p>");
-
-//     const postTitle = postList[i].title;
-//     const body = postList[i].body;
-
-//     $p.text(body);
-//     $title.text(postTitle);
-
-//     $divCard.append($title);
-//     $divCard.append($p);
-//     $cardContainer.append($divCard)
-// }
 
 const createPostCard = (post) => {
     return $(`
@@ -35,7 +20,7 @@ const createPostCard = (post) => {
                 <h3>${post.title}</h3>
                 <p>${post.body}</p>
             </div>
-        <a>
+        </a>
     `)
 }
 
@@ -45,17 +30,6 @@ const displayUsers = (userList) => {
         $userContainer.append(card);
     })
 }
-// for (let i = 0; i < userList.length; i++) {
-//     const $divCardUser = $("<div>");
-//     const $p = $("<p>");
-//     $p.attr("class", "userName")
-
-//     const userName = userList[i].name;
-
-//     $p.text(userName);
-//     $divCardUser.append($p);
-//     $userContainer.append($divCardUser);
-// }
 
 const createUserCard = (user) => {
     return $(`
@@ -68,26 +42,14 @@ const createUserCard = (user) => {
 }
 
 const displaySinglePost = (post) => {
-
     $singlePostContainer.append(createSinglePost(post));
-
-
-
-    // const $divSinglePost = $(`<div></div>`)
-    // const $postTitle = $(`<h2>${post.title}</h2>`);
-    // const $postBody = $(`<p>${post.body}</p>`);
-
-    // $divSinglePost.append($postTitle);
-    // $divSinglePost.append($postBody);
-    // $singlePostContainer.append($divSinglePost)
-    // $singlePostContainer.append($postBody);
 }
 
 const createSinglePost = (post) => {
     return $(`
-     <h1 class="singlePostTitle">${post.title}</h1>
-     <p class="singlePostBody">${post.body}</p> 
-    `)
+        <h1 class="singlePostTitle">${post.title}</h1>
+        <p class="singlePostBody">${post.body}</p> 
+        `)
 }
 
 const displayUserLink = (userLink) => {
@@ -96,22 +58,23 @@ const displayUserLink = (userLink) => {
 
 const createUserLink = (user) => {
     return $(`
-    <div class="userLinkDiv">
-        <a id="userLink" href="singleAuthorPage.html">${user.name}</a>
-    </div>
+        <div class="userLinkDiv">
+            <a id="userLink" href="singleAuthorPage.html">${user.name}</a>
+        </div>
     `)
 }
 
 const displayRelatedLinks = (relatedLinks) => {
     relatedLinks.forEach(post => {
-
-        $relatedLinksDiv.append(createRelatedLinks(post))
+        $singlePostContainer.append(createRelatedLinks(post))
     })
 }
 
 const createRelatedLinks = (post) => {
     return $(`
-    <a  class="relatedLinks" href="singlePostPage.html">${post.title}</a>
+        <a data-id="${post.id}" data-userId=${post.userId} href="singlePostPage.html" class="relatedLinks">
+            - ${post.title}
+        </a>
     `)
 }
 
@@ -121,39 +84,41 @@ const displayUserInfo = (user) => {
 
 const createUserInfo = (user) => {
     return (`
-    <div class="userInfo">
-        <h2 class="">${user.name}</h2>
+        <div class="userInfo">
+            <h2 class="">${user.name}</h2>
             <p class="userInfoParagraph"><b>Username:</b> ${user.username}</p>
             <p class="userInfoParagraph"><b>Email:</b> ${user.email}</p>
             <p class="userInfoParagraph"><b>Phone:</b> ${user.phone}</p>
-     </div>   
-     <div class="userInfo">
-     <h2>Address</h2>
-         <p class="userInfoParagraph"><b>Street:</b> ${user.address.street}</p>
-         <p class="userInfoParagraph"><b>City:</b> ${user.address.city}</p>
-  </div> 
-  <div class="userInfo">
-  <h2>Company</h2>
-      <p class="userInfoParagraph"><b>Name:</b> ${user.company.name}</p>
-      <p class="userInfoParagraph"><b>Slogan:</b> ${user.company.catchPhrase}</p>
-</div> 
+        </div>   
+        <div class="userInfo">
+            <h2>Address</h2>
+            <p class="userInfoParagraph"><b>Street:</b> ${user.address.street}</p>
+            <p class="userInfoParagraph"><b>City:</b> ${user.address.city}</p>
+        </div> 
+        <div class="userInfo">
+            <h2>Company</h2>
+            <p class="userInfoParagraph"><b>Name:</b> ${user.company.name}</p>
+            <p class="userInfoParagraph"><b>Slogan:</b> ${user.company.catchPhrase}</p>
+        </div> 
     `)
 }
 
 const displayCommentCard = (commentList) => {
     commentList.forEach(comment => {
 
-        $commentDiv.append(createCommentCard(comment))
+        $singlePostContainer.append(createCommentCard(comment))
     })
 }
 
 const createCommentCard = (comment) => {
     return (`
-        <div class="comment-div">
-        <img src="https://t4.ftcdn.net/jpg/01/16/06/45/240_F_116064582_KlXENacGmdt4xl8H6fQRYfSZLntLNKSX.jpg" class="comment-user-picture"/>
-        <h3>${comment.email}</h3>
-        <p>${comment.body}</p>
-        </div>
+        <ul class="comment-list">
+            <li class="comment-content">
+                <img src="https://t4.ftcdn.net/jpg/01/16/06/45/240_F_116064582_KlXENacGmdt4xl8H6fQRYfSZLntLNKSX.jpg" class="comment-user-picture"/>
+                <span>${comment.email}</span>
+                <p>${comment.body}</p>
+            </li>
+        </ul>
     `)
 }
 
@@ -178,8 +143,6 @@ export {
     displayUsers,
     createPostCard,
     createUserCard,
-    // showLoading,
-    // hideLoading,
     displaySinglePost,
     displayRelatedLinks,
     displayUserInfo,

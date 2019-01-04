@@ -15,7 +15,7 @@ html, body {
   main {
     flex: 1 0 auto;
   }
-  
+
   footer {
     flex-shrink: 0;
   }
@@ -51,13 +51,9 @@ html, body {
 }
 
  .single-post-container {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    color: orange;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding-top: 20px;
 } 
+
+
 
 
 .userLinkDiv {
@@ -72,6 +68,10 @@ html, body {
 }
 
 .singlePostBody {
+    margin: 0 auto;
+    color: orange;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding-top: 20px;
     font-size: 1.3em;
 }
 
@@ -216,27 +216,42 @@ li {
  }
 
  .comment-div {
-     border-bottom: 2px solid grey;
-     padding: 1.5em;
+    border-bottom: 2px solid grey;
+    padding: 1.5em;
  }
-
- .comment-user-picture {
-     width: 50px;
- }
-
- .comment-div h3 {
-     color: gray;
-     padding-bottom: 0.5em;
-     display: inline;
+ 
+  .comment-list {
+     border: 1px solid #e0e0e0;
+     border-radius: 2px;
+     overflow: hidden;
      position: relative;
-     bottom: 20px;
- }
+     padding: 1em;
+  }
 
- .albums-title {
-  text-align: center;
-  color: orange;
-  padding: 20px;
- }
+  .comment-content span {
+      position: relative;
+      padding-left: 72px;
+      text-transform: lowercase; 
+  }
+
+  .comment-content p {
+    position: relative;
+    left: 72px;
+  }
+
+  .comment-content img {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      left: 15px;
+      display: inline-block;
+  }
+
+ /* .albums-title {
+    text-align: center;
+    color: orange;
+    padding: 20px;
+ } */
 
 
 footer {

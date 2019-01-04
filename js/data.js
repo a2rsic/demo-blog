@@ -54,8 +54,10 @@ const fetchUser = (id) => {
     return fetch(urlUser)
         .then(response => response.json())
         .then(response => {
-           return response;
+            const { id, name } = response;
+            return new User(id, name)
         })
+
 }
 
 const setUserId = (id) => {
@@ -102,32 +104,33 @@ const fetchRelatedLinks = (userId) => {
     return fetch(urlUserId)
         .then(response => response.json())
         .then(userArray => {
-           const relatedLinks = userArray.map( post => {
-               return new Post(post.id, post.body, post.title, post.userId)
-           })
-           return relatedLinks;
+            const relatedLinks = userArray.map(post => {
+                return new Post(post.id, post.body, post.title, post.userId);
+            });
+            const relatedPostId = getPostId()
+            return relatedLinks.filter(post => post.id !== relatedPostId)
         })
 
-    }
+}
 
-    const fetchComments = (postId) => {
-        const urlComments = "https://jsonplaceholder.typicode.com/comments?postId=" + `${postId}`;
+const fetchComments = (postId) => {
+    const urlComments = "https://jsonplaceholder.typicode.com/comments?postId=" + `${postId}`;
 
-        return fetch(urlComments)
-            .then(response => response.json())
-            .then(commentsArray => {
-                const comment = commentsArray.map( comment => {
-                    const { postId, name, body, email } = comment;
-                    return new Comment(postId, name, body, email);
-                })
-                return comment;
+    return fetch(urlComments)
+        .then(response => response.json())
+        .then(commentsArray => {
+            const comment = commentsArray.map(comment => {
+                const { postId, name, body, email } = comment;
+                return new Comment(postId, name, body, email);
             })
-    }
-    // const checkUserId = () => {
-    //     const userIdValue = getUserId();
-        
-    //     if()
-    // }
+            return comment;
+        })
+}
+// const checkUserId = () => {
+//     const userIdValue = getUserId();
+
+//     if()
+// }
 
 
 
