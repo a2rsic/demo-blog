@@ -25,12 +25,6 @@ html, body {
     background-color: orange;
     padding: 20px;
 }
-.container {
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-    margin: 0 auto;
-}
 
 .mainWrapper {
     width: 80%;
@@ -106,7 +100,7 @@ a {
     text-decoration: none;
     color: white;
     padding: 10px;
-    font-size: 18px;
+    font-size: 20px;
 }
 .user-link {
     color: burlywood;
@@ -284,4 +278,5 @@ footer p {
     padding: 10px;
     margin: 0 auto;
 }
+
 

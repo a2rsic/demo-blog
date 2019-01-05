@@ -6,28 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/navigation.css">
     <title>Bit Blog</title>
 </head>
 
 <body>
     <header class="container-fluid">
-        <div class="container">
-            <a id="link-bit-blog" href="./index.html">BIT Blog</a>
-            <ul class="nav-list">
+        <nav class="navbar">
+            <span class="navbar-toggle" id="js-navbar-toggle">
+                <img id="navbar-img" src="https://tysonscore3.azureedge.net/assets/media/tysonretail/images/icons/navigation/buttonnavmobile.ashx"
+                    class="fas fa-bars"></img>
+            </span>
+            <a href="./index.html" class="logo">BIT Blog</a>
+            <ul class="main-nav" id="menu-list">
                 <li>
-                    <a class="link-hover" href="./index.html">Home</a>
+                    <a href="./index.html" class="nav-links">Home</a>
                 </li>
                 <li>
-                    <a class="link-hover" href="./authors.html">Authors</a>
+                    <a href="./authors.html" class="nav-links">Authors</a>
                 </li>
-                <!-- <li>
-                    <a href="./albums.html" class="link-hover">Albums</a>
-                </li> -->
                 <li>
-                    <a class="link-hover" href="./about.html">About</a>
+                    <a href="./about.html" class="nav-links">About</a>
                 </li>
             </ul>
-        </div>
+        </nav>
     </header>
     <main class="mainWrapper">
         <div class="singleAuthorContainer">
