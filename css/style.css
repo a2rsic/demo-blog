@@ -3,6 +3,19 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.loader {
+    text-align: center;
+    /* position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('images/pageLoader.gif') 50% 50% no-repeat rgb(249,249,249); */
+    opacity: .8;
+}
+
 html, body {
     height: 100%;
   }
@@ -45,6 +58,7 @@ html, body {
 }
 
  .single-post-container {
+     vertical-align: middle;
 } 
 
 
@@ -170,6 +184,7 @@ li {
 #userLink {
     color: blue;
     display: inline;
+    vertical-align: middle;
 }
 
 .userName{

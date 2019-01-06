@@ -3,19 +3,19 @@ const $cardContainer = $(".cardContainer");
 const $singlePostContainer = $(".single-post-container");
 const $singleAuthorContainer = $(".singleAuthorContainer");
 const $relatedLinksDiv = $(".relatedLinksDiv");
-const $commentDiv = $(".comment-div-container")
+const $commentDiv = $(".comment-div-container");
+const $userLinkDiv = $(".userLink")
 
 
 const displayPosts = (postList) => {
     postList.forEach(post => {
-        // hideLoading()
         $cardContainer.append(createPostCard(post))
     })
 }
 
 const createPostCard = (post) => {
     return $(`
-        <a data-id="${post.id}" data-userId=${post.userId} href="singlePostPage.html" class="post-id-div">
+        <a data-id="${post.id}" data-userId="${post.userId}" href="singlePostPage.html" class="post-id-div">
             <div>
                 <h3>${post.title}</h3>
                 <p>${post.body}</p>
@@ -41,39 +41,38 @@ const createUserCard = (user) => {
     `)
 }
 
-const displaySinglePost = (post) => {
+const displaySinglePost = (post, user) => {
     $singlePostContainer.append(createSinglePost(post));
+    $singlePostContainer.append(createUserLink(user))
 }
 
-const createSinglePost = (post) => {
+const createSinglePost = (post, user) => {
     return $(`
-        <h1 class="singlePostTitle">${post.title}</h1>
-        <p class="singlePostBody">${post.body}</p> 
+            <h1 class="singlePostTitle">${post.title}</h1>
+            <p class="singlePostBody">${post.body}</p> 
         `)
 }
 
 const displayUserLink = (userLink) => {
-    $singlePostContainer.append(createUserLink(userLink))
+    $userLinkDiv.append(createUserLink(userLink))
 }
 
 const createUserLink = (user) => {
     return $(`
-        <div class="userLinkDiv">
-            <a id="userLink" href="singleAuthorPage.html">${user.name}</a>
-        </div>
+        <a data-user-id=${user.id} id="userLink" href="singleAuthorPage.html">${user.name}</a>
     `)
 }
 
 const displayRelatedLinks = (relatedLinks) => {
     relatedLinks.forEach(post => {
-        $singlePostContainer.append(createRelatedLinks(post))
+        $relatedLinksDiv.append(createRelatedLinks(post))
     })
 }
 
 const createRelatedLinks = (post) => {
     return $(`
         <a data-id="${post.id}" data-userId=${post.userId} href="singlePostPage.html" class="relatedLinks">
-            - ${post.title}
+        - ${post.title}
         </a>
     `)
 }
@@ -105,8 +104,7 @@ const createUserInfo = (user) => {
 
 const displayCommentCard = (commentList) => {
     commentList.forEach(comment => {
-
-        $singlePostContainer.append(createCommentCard(comment))
+        $commentDiv.append(createCommentCard(comment))
     })
 }
 
@@ -122,21 +120,10 @@ const createCommentCard = (comment) => {
     `)
 }
 
-// const loadContent = () => {
-//     const $loading = $(`<h3>loading...</h3>`)
-//     $('.cardContainer').append($loading)
-// }
-
-// const showLoading = () => {
-//     loadContent()
-// }
-
-// const hideLoading = () => {
-//     const $loading = $(`<h3>loading...</h3>`)
-//     $(".cardContainer").hide($loading)
-
-// }
-
+const hideLoading = () => {
+    // $(".spiner").fadeOut('fast');
+    $(".spinner").hide();
+}
 
 export {
     displayPosts,
@@ -147,5 +134,6 @@ export {
     displayRelatedLinks,
     displayUserInfo,
     displayUserLink,
-    displayCommentCard
+    displayCommentCard,
+    hideLoading
 }

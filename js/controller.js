@@ -5,38 +5,45 @@ import * as ui from "./ui.js";
 
 const init = () => {
     console.log("ready")
-    // ui.showLoading()
-    // ui.loadContent()
 
 
     data.fetchPosts()
         .then(postList => {
             ui.displayPosts(postList)
-            // ui.hideLoading()
+            ui.hideLoading();
             $(".post-id-div").on('click', (event) => {
-                console.log(event);
-                const postId = event.currentTarget.attributes[0].value;
+                const { currentTarget } = event;
+                // console.log(event);
+                const postId = $(currentTarget).attr("data-id");
                 data.savePostId(postId);
 
-                const userId = event.currentTarget.attributes[1].value;
+                const userId = $(currentTarget).attr("data-userId");
                 data.saveUserId(userId);
 
-                const user_id = event.currentTarget.attributes[1].value;
+                const user_id = $(currentTarget).attr("data-user-id");
                 data.setUserId(user_id);
 
             })
         })
 }
 
+const onClickHandler = () => {
+
+}
+
 const initAuthorsPage = () => {
     console.log("ready")
+
 
     data.fetchUsers()
         .then(userList => {
             ui.displayUsers(userList);
+            ui.hideLoading()
 
             $(".user-link").on("click", (event) => {
-                const user_id = event.currentTarget.attributes[0].value;
+                const { currentTarget } = event;
+
+                const user_id = $(currentTarget).attr("data-user-id");
                 data.setUserId(user_id)
 
                 console.log("myEvent", event);
@@ -53,6 +60,7 @@ const initSinglePostPage = () => {
     data.fetchPost(postId)
         .then(post => {
             ui.displaySinglePost(post)
+            ui.hideLoading()
         });
 
     const userId = data.getUserId();
@@ -62,27 +70,32 @@ const initSinglePostPage = () => {
 
             console.log("related Links", relatedLinks);
             ui.displayRelatedLinks(relatedLinks);
+            ui.hideLoading();
 
             $(".relatedLinks").on("click", event => {
-                console.log("my event", event);
+                const { currentTarget } = event;
 
-                const postId = event.currentTarget.attributes[0].value;
+                // const postId = event.currentTarget.attributes[0].value;
+                const postId = $(currentTarget).attr('data-id');
+
                 data.savePostId(postId)
             })
         });
 
-    const user_id = data.getUserId()
+    const user_id = data.catchUserId()
 
     data.fetchUser(user_id)
         .then(userLink => {
-            // console.log("my response", userLink);
-            // ui.displaySinglePost(userLink)
+            console.log("my response", userLink);
+            ui.displayUserLink(userLink)
+            ui.hideLoading()
         });
 
     data.fetchComments(postId)
         .then(commentList => {
             // console.log("my comments", comment);
             ui.displayCommentCard(commentList)
+            ui.hideLoading()
         });
 }
 
@@ -93,6 +106,7 @@ const initSingleAuthorPage = () => {
     data.fetchUser(user_id)
         .then(user => {
             ui.displayUserInfo(user)
+            ui.hideLoading()
         })
 }
 
