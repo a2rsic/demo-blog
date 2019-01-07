@@ -4,6 +4,14 @@
     box-sizing: border-box;
 }
 
+.hidden {
+    display: none;
+}
+
+.active {
+    display: block;
+}  
+
 .loader {
     text-align: center;
     /* position: fixed;
@@ -13,7 +21,7 @@
     height: 100%;
     z-index: 9999;
     background: url('images/pageLoader.gif') 50% 50% no-repeat rgb(249,249,249); */
-    opacity: .8;
+    /* opacity: .8; */
 }
 
 html, body {
@@ -60,9 +68,6 @@ html, body {
  .single-post-container {
      vertical-align: middle;
 } 
-
-
-
 
 .userLinkDiv {
     order: 0;
@@ -180,11 +185,16 @@ li {
     padding: 20px;
 }
 
+.userLink {
+    text-align: center;
+    position: relative;
+    margin-top: 20px;
+}
+
 
 #userLink {
     color: blue;
     display: inline;
-    vertical-align: middle;
 }
 
 .userName{

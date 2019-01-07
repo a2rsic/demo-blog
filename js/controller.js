@@ -6,6 +6,15 @@ import * as ui from "./ui.js";
 const init = () => {
     console.log("ready")
 
+    // $('#navbar-img').on('click', function () {
+
+    //     $('#js-menu').classList.toggle(
+            
+    //         function(){$("#navbar-img").css({"color": "red"});},
+
+    //     );
+    // })
+
 
     data.fetchPosts()
         .then(postList => {
@@ -53,14 +62,15 @@ const initAuthorsPage = () => {
 
 const initSinglePostPage = () => {
     console.log("ready postPage");
+    // ui.showLoading()
 
     // read LC id value 
 
     const postId = data.getPostId();
     data.fetchPost(postId)
         .then(post => {
-            ui.displaySinglePost(post)
-            ui.hideLoading()
+            ui.hideLoading();
+            ui.displaySinglePost(post);
         });
 
     const userId = data.getUserId();
@@ -69,10 +79,11 @@ const initSinglePostPage = () => {
         .then(relatedLinks => {
 
             console.log("related Links", relatedLinks);
-            ui.displayRelatedLinks(relatedLinks);
             ui.hideLoading();
+            ui.displayRelatedLinks(relatedLinks);
 
             $(".relatedLinks").on("click", event => {
+                console.log("event", event);
                 const { currentTarget } = event;
 
                 // const postId = event.currentTarget.attributes[0].value;
@@ -82,13 +93,14 @@ const initSinglePostPage = () => {
             })
         });
 
-    const user_id = data.catchUserId()
+    const user_id = data.getUserId()
 
     data.fetchUser(user_id)
         .then(userLink => {
             console.log("my response", userLink);
             ui.displayUserLink(userLink)
-            ui.hideLoading()
+            ui.hideLoading();
+            ui.showContentonLoad()
         });
 
     data.fetchComments(postId)
@@ -96,6 +108,7 @@ const initSinglePostPage = () => {
             // console.log("my comments", comment);
             ui.displayCommentCard(commentList)
             ui.hideLoading()
+            ui.showContentonLoad()
         });
 }
 

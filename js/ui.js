@@ -4,7 +4,8 @@ const $singlePostContainer = $(".single-post-container");
 const $singleAuthorContainer = $(".singleAuthorContainer");
 const $relatedLinksDiv = $(".relatedLinksDiv");
 const $commentDiv = $(".comment-div-container");
-const $userLinkDiv = $(".userLink")
+const $userLinkDiv = $(".userLink");
+
 
 
 const displayPosts = (postList) => {
@@ -41,12 +42,13 @@ const createUserCard = (user) => {
     `)
 }
 
-const displaySinglePost = (post, user) => {
+const displaySinglePost = (post) => {
+    $('#root').removeClass('hidden');
+
     $singlePostContainer.append(createSinglePost(post));
-    $singlePostContainer.append(createUserLink(user))
 }
 
-const createSinglePost = (post, user) => {
+const createSinglePost = (post) => {
     return $(`
             <h1 class="singlePostTitle">${post.title}</h1>
             <p class="singlePostBody">${post.body}</p> 
@@ -54,16 +56,19 @@ const createSinglePost = (post, user) => {
 }
 
 const displayUserLink = (userLink) => {
+    console.log(userLink);
     $userLinkDiv.append(createUserLink(userLink))
 }
 
 const createUserLink = (user) => {
     return $(`
-        <a data-user-id=${user.id} id="userLink" href="singleAuthorPage.html">${user.name}</a>
+        <a data-user-id='${user.id}' id="userLink">${user.name}</a>
     `)
 }
 
 const displayRelatedLinks = (relatedLinks) => {
+    $('#root').removeClass('hidden');
+
     relatedLinks.forEach(post => {
         $relatedLinksDiv.append(createRelatedLinks(post))
     })
@@ -71,7 +76,7 @@ const displayRelatedLinks = (relatedLinks) => {
 
 const createRelatedLinks = (post) => {
     return $(`
-        <a data-id="${post.id}" data-userId=${post.userId} href="singlePostPage.html" class="relatedLinks">
+        <a data-id="${post.id}" data-userId=${post.userId} href="" class="relatedLinks">
         - ${post.title}
         </a>
     `)
@@ -121,9 +126,15 @@ const createCommentCard = (comment) => {
 }
 
 const hideLoading = () => {
-    // $(".spiner").fadeOut('fast');
     $(".spinner").hide();
 }
+
+const showContentonLoad = () => {
+    $(function () {
+        $('#root').removeClass('hidden');
+    })
+}
+
 
 export {
     displayPosts,
@@ -135,5 +146,6 @@ export {
     displayUserInfo,
     displayUserLink,
     displayCommentCard,
-    hideLoading
+    hideLoading,
+    showContentonLoad,
 }
