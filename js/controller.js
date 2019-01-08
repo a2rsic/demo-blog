@@ -9,7 +9,7 @@ const init = () => {
     // $('#navbar-img').on('click', function () {
 
     //     $('#js-menu').classList.toggle(
-            
+
     //         function(){$("#navbar-img").css({"color": "red"});},
 
     //     );
@@ -18,25 +18,23 @@ const init = () => {
 
     data.fetchPosts()
         .then(postList => {
-            ui.displayPosts(postList)
             ui.hideLoading();
-            $(".post-id-div").on('click', (event) => {
-                const { currentTarget } = event;
-                // console.log(event);
-                const postId = $(currentTarget).attr("data-id");
-                data.savePostId(postId);
-
-                const userId = $(currentTarget).attr("data-userId");
-                data.saveUserId(userId);
-
-                const user_id = $(currentTarget).attr("data-user-id");
-                data.setUserId(user_id);
-
-            })
+            ui.displayPosts(postList)
+            $(".post-id-div").on('click', onPostClickHandler)
         })
 }
 
-const onClickHandler = () => {
+const onPostClickHandler = (event) => {
+    const { currentTarget } = event;
+    // console.log(event);
+    const postId = $(currentTarget).attr("data-id");
+    data.savePostId(postId);
+
+    const userId = $(currentTarget).attr("data-userId");
+    data.saveUserId(userId);
+
+    const user_id = $(currentTarget).attr("data-user-id");
+    data.setUserId(user_id);
 
 }
 
@@ -71,6 +69,13 @@ const initSinglePostPage = () => {
         .then(post => {
             ui.hideLoading();
             ui.displaySinglePost(post);
+
+
+            data.fetchUser(post.userId)
+                .then(userLink => {
+                    console.log("my response", userLink);
+                    ui.displayUserLink(userLink)
+                });
         });
 
     const userId = data.getUserId();
@@ -91,16 +96,6 @@ const initSinglePostPage = () => {
 
                 data.savePostId(postId)
             })
-        });
-
-    const user_id = data.getUserId()
-
-    data.fetchUser(user_id)
-        .then(userLink => {
-            console.log("my response", userLink);
-            ui.displayUserLink(userLink)
-            ui.hideLoading();
-            ui.showContentonLoad()
         });
 
     data.fetchComments(postId)

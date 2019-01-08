@@ -4,26 +4,6 @@
     box-sizing: border-box;
 }
 
-.hidden {
-    display: none;
-}
-
-.active {
-    display: block;
-}  
-
-.loader {
-    text-align: center;
-    /* position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background: url('images/pageLoader.gif') 50% 50% no-repeat rgb(249,249,249); */
-    /* opacity: .8; */
-}
-
 html, body {
     height: 100%;
   }
@@ -39,7 +19,28 @@ html, body {
 
   footer {
     flex-shrink: 0;
-  }
+    background-color: orange;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin: 0 auto;
+}
+  
+
+.hidden {
+    display: none;
+}
+
+.active {
+    display: block;
+}  
+
     
 .container-fluid {
     width: 100%;
@@ -47,38 +48,44 @@ html, body {
     padding: 20px;
 }
 
-.mainWrapper {
+main {
     width: 80%;
     margin: 0 auto;
 }
 
-.cardContainer div{
-    width: 100%;
-    padding: 30px;
+.post-container-section {
+    margin: 30px 0;
     color: burlywood;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }
 
-.cardContainer div:hover {
+.single-post-container p {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 40px;
+    margin: 10px 0;
+    font-size: 20px;
+}
+.single-post-container h1 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.author-link {
+    text-align: center;
+    padding: 20px;
+}
+
+.cardContainer a:hover {
     box-shadow: 0 4px 8px 0 rosybrown, 0 6px 20px 0 rosybrown;
 
 }
 
- .single-post-container {
-     vertical-align: middle;
-} 
-
+/* 
 .userLinkDiv {
     order: 0;
     text-align: center;
     padding: 0.8em;
-}
+} */
 
-.singlePostTitle {
-    text-align: center;
-    padding: 20px;
-}
 
 .singlePostBody {
     margin: 0 auto;
@@ -86,16 +93,6 @@ html, body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding-top: 20px;
     font-size: 1.3em;
-}
-
-.singlePostBody {
-    padding: 30px;
-    color: burlywood;
-}
-
-.relatedLinksTitle {
-    padding: 30px 30px 20px 10px;
-    color: rgb(202, 144, 17);
 }
 
 .relatedLinks {
@@ -121,6 +118,17 @@ a {
     padding: 10px;
     font-size: 20px;
 }
+
+.post-id-div {
+    display: block;
+    text-decoration: none;
+    color: burlywood;
+    padding: 30px;
+    font-size: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
 .user-link {
     color: burlywood;
 }
@@ -145,8 +153,6 @@ a {
     float: right!important;
     display: flex;
     flex-direction: row;
-    /* display: inline; */
-    /* float: right; */
 }
 
 #link-bit-blog {
@@ -156,8 +162,6 @@ a {
 
 li {
     list-style-type: none;
-    /* display: inline; */
-    /* float: left; */
 }
 
 .link-hover {
@@ -233,44 +237,33 @@ li {
 
  }
 
- .commentTitle {
-    padding: 30px 0;
-    color: rgb(202, 144, 17);
+ .comment-content {
+     border-bottom: 1px solid  #e0e0e0;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    padding: 1em;
  }
 
- .comment-div-container {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
- }
-
- .comment-div {
-    border-bottom: 2px solid grey;
-    padding: 1.5em;
+ .comment-container {
+    padding: 20px 0;
  }
  
   .comment-list {
-      width: 100%;
      border: 1px solid #e0e0e0;
-     border-radius: 2px;
      overflow: hidden;
      position: relative;
-     /* padding: 1em; */
-  }
-
-  .comment-content {
-      width: 100%;
-      padding: 1em;
   }
 
   .comment-content span {
       position: relative;
       padding-left: 72px;
-      text-transform: lowercase; 
+      text-transform: lowercase;
+      color: grey;
   }
 
   .comment-content p {
     position: relative;
     left: 72px;
+    width: 80%;
   }
 
   .comment-content img {
@@ -288,20 +281,5 @@ li {
  } */
 
 
-footer {
-    background-color: orange;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-
-
-footer p {
-    color: white;
-    text-align: center;
-    padding: 10px;
-    margin: 0 auto;
-}
 
 

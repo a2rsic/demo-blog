@@ -2,11 +2,11 @@ const $userContainer = $(".userContainer");
 const $cardContainer = $(".cardContainer");
 const $singlePostContainer = $(".single-post-container");
 const $singleAuthorContainer = $(".singleAuthorContainer");
-const $relatedLinksDiv = $(".relatedLinksDiv");
-const $commentDiv = $(".comment-div-container");
-const $userLinkDiv = $(".userLink");
+const $relatedLinksContainer = $(".related-links-container");
+const $commentList = $(".comment-list");
 
 
+// Home / Post Page
 
 const displayPosts = (postList) => {
     postList.forEach(post => {
@@ -25,6 +25,74 @@ const createPostCard = (post) => {
     `)
 }
 
+
+// Single Post Page
+
+const displaySinglePost = (post) => {
+    $('.post-container-section').removeClass('hidden');
+
+    const singlePostHtml = createSinglePost(post)
+    $singlePostContainer.append(singlePostHtml);
+}
+
+const createSinglePost = (post) => {
+    return $(`
+            <h1 class="single-post-title">${post.title}</h1>
+            <div class="author-link"></div>
+            <p class="single-post-body">${post.body}</p> 
+        `)
+}
+
+const displayUserLink = (userLink) => {
+    console.log(userLink);
+    const authorLinkHtml = createUserLink(userLink)
+    $(".author-link").append(authorLinkHtml)
+}
+
+const createUserLink = (user) => {
+    return $(`
+        <a data-user-id='${user.id}' id="userLink" href="./singleAuthorPage.html">${user.name}</a>
+    `)
+}
+
+const displayRelatedLinks = (relatedLinks) => {
+    $('.related-links-section').removeClass('hidden');
+
+    relatedLinks.forEach(post => {
+        const relatedLinksHtml = createRelatedLinks(post)
+        $relatedLinksContainer.append(relatedLinksHtml)
+    })
+}
+
+const createRelatedLinks = (post) => {
+    return $(`
+        <a data-id="${post.id}" data-userId=${post.userId} href="" class="relatedLinks">
+        - ${post.title}
+        </a>
+    `)
+}
+
+const displayCommentCard = (commentList) => {
+    $(".comments-container-section").removeClass("hidden");
+    commentList.forEach(comment => {
+        const commentHtml = createCommentCard(comment)
+        $commentList.append(commentHtml);
+    })
+}
+
+const createCommentCard = (comment) => {
+    return (`
+            <li class="comment-content">
+                <img src="https://t4.ftcdn.net/jpg/01/16/06/45/240_F_116064582_KlXENacGmdt4xl8H6fQRYfSZLntLNKSX.jpg" class="comment-user-picture"/>
+                <span>${comment.email}</span>
+                <p>${comment.body}</p>
+            </li>
+    `)
+}
+
+
+// Authors Page
+
 const displayUsers = (userList) => {
     userList.forEach(user => {
         const card = createUserCard(user)
@@ -42,45 +110,7 @@ const createUserCard = (user) => {
     `)
 }
 
-const displaySinglePost = (post) => {
-    $('#root').removeClass('hidden');
-
-    $singlePostContainer.append(createSinglePost(post));
-}
-
-const createSinglePost = (post) => {
-    return $(`
-            <h1 class="singlePostTitle">${post.title}</h1>
-            <p class="singlePostBody">${post.body}</p> 
-        `)
-}
-
-const displayUserLink = (userLink) => {
-    console.log(userLink);
-    $userLinkDiv.append(createUserLink(userLink))
-}
-
-const createUserLink = (user) => {
-    return $(`
-        <a data-user-id='${user.id}' id="userLink">${user.name}</a>
-    `)
-}
-
-const displayRelatedLinks = (relatedLinks) => {
-    $('#root').removeClass('hidden');
-
-    relatedLinks.forEach(post => {
-        $relatedLinksDiv.append(createRelatedLinks(post))
-    })
-}
-
-const createRelatedLinks = (post) => {
-    return $(`
-        <a data-id="${post.id}" data-userId=${post.userId} href="" class="relatedLinks">
-        - ${post.title}
-        </a>
-    `)
-}
+// Single Author Page
 
 const displayUserInfo = (user) => {
     $singleAuthorContainer.append(createUserInfo(user))
@@ -107,23 +137,6 @@ const createUserInfo = (user) => {
     `)
 }
 
-const displayCommentCard = (commentList) => {
-    commentList.forEach(comment => {
-        $commentDiv.append(createCommentCard(comment))
-    })
-}
-
-const createCommentCard = (comment) => {
-    return (`
-        <ul class="comment-list">
-            <li class="comment-content">
-                <img src="https://t4.ftcdn.net/jpg/01/16/06/45/240_F_116064582_KlXENacGmdt4xl8H6fQRYfSZLntLNKSX.jpg" class="comment-user-picture"/>
-                <span>${comment.email}</span>
-                <p>${comment.body}</p>
-            </li>
-        </ul>
-    `)
-}
 
 const hideLoading = () => {
     $(".spinner").hide();
