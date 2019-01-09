@@ -55,7 +55,7 @@ const createUserLink = (user) => {
     `)
 }
 
-const displayRelatedLinks = (relatedLinks) => {
+const displayRelatedLinks = (relatedLinks, postId) => {
 
     relatedLinks.forEach(post => {
         $('.related-links-section').removeClass('hidden');
@@ -152,6 +152,16 @@ const showContentonLoad = () => {
     })
 }
 
+const navResponsive = () => {
+
+    const mainNav = document.getElementById('js-menu');
+    const navBarToggle = document.getElementById('js-navbar-toggle');
+
+    navBarToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+    })
+}
+
 
 export {
     displayPosts,
@@ -163,4 +173,5 @@ export {
     displayCommentCard,
     hideLoading,
     showContentonLoad,
+    navResponsive
 }

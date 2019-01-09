@@ -92,11 +92,10 @@ const fetchRelatedLinks = (userId) => {
             const relatedLinks = userArray.map(post => {
                 return new Post(post.id, post.body, post.title, post.userId);
             });
-            const post_id = userArray.id
             const relatedPostId = getPostId();
-            if (post_id !== relatedPostId) {
-                return relatedLinks;
-            }
+            return relatedLinks.filter(user => {
+                return user.id != relatedPostId
+            })
         })
 
 }

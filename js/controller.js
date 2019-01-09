@@ -4,12 +4,15 @@ import * as ui from "./ui.js";
 
 
 const init = () => {
-    console.log("ready")
+    console.log("ready");
+    ui.navResponsive()
 
-    $('#navbar-img').on('click', () => {
+    // const $navDiv = $(".navbar-container");
 
-        $(".navbar-container").classList.toggle("active");
-    })
+    // $('#navbar-img').on('click', () => {
+
+    //     $navDiv.classList.classList.toggle("active");
+    // })
 
 
     data.fetchPosts()
