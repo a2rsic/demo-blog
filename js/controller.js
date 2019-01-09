@@ -5,7 +5,7 @@ import * as ui from "./ui.js";
 
 const init = () => {
     console.log("ready");
-    ui.navResponsive()
+    // ui.navResponsive()
 
     // const $navDiv = $(".navbar-container");
 

@@ -113,11 +113,7 @@ const fetchComments = (postId) => {
             return comment;
         })
 }
-// const checkUserId = () => {
-//     const userIdValue = getUserId();
 
-//     if()
-// }
 
 
 
