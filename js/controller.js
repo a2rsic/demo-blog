@@ -73,7 +73,7 @@ const initSinglePostPage = () => {
 
             data.fetchUser(post.userId)
                 .then(userLink => {
-                    console.log("my response", userLink);
+                    // console.log("my response", userLink);
                     ui.displayUserLink(userLink)
                 });
         });
@@ -100,7 +100,6 @@ const initSinglePostPage = () => {
 
     data.fetchComments(postId)
         .then(commentList => {
-            // console.log("my comments", comment);
             ui.displayCommentCard(commentList)
             ui.hideLoading()
             ui.showContentonLoad()
@@ -113,8 +112,9 @@ const initSingleAuthorPage = () => {
     const user_id = data.catchUserId()
     data.fetchUser(user_id)
         .then(user => {
-            ui.displayUserInfo(user)
+            // console.log("user info", user);
             ui.hideLoading()
+            ui.displayUserInfo(user)
         })
 }
 

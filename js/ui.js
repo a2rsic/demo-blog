@@ -1,7 +1,7 @@
-const $userContainer = $(".userContainer");
+const $authorsContainer = $(".authors-container");
 const $cardContainer = $(".cardContainer");
 const $singlePostContainer = $(".single-post-container");
-const $singleAuthorContainer = $(".singleAuthorContainer");
+const $singleAuthorContainer = $(".single-author-container");
 const $relatedLinksContainer = $(".related-links-container");
 const $commentList = $(".comment-list");
 
@@ -94,13 +94,14 @@ const createCommentCard = (comment) => {
 // Authors Page
 
 const displayUsers = (userList) => {
+    $(".authors-container").removeClass("hidden");
     userList.forEach(user => {
-        const card = createUserCard(user)
-        $userContainer.append(card);
+        const card = createAuthorCard(user)
+        $authorsContainer.append(card);
     })
 }
 
-const createUserCard = (user) => {
+const createAuthorCard = (user) => {
     return $(`
         <a data-user-id=${user.id} class="user-link" href="singleAuthorPage.html"> 
             <div class="div-display-user">
@@ -113,7 +114,10 @@ const createUserCard = (user) => {
 // Single Author Page
 
 const displayUserInfo = (user) => {
-    $singleAuthorContainer.append(createUserInfo(user))
+    $(".single-author-container").removeClass("hidden");
+
+    const userInfoHtml = createUserInfo(user)
+    $singleAuthorContainer.append(userInfoHtml)
 }
 
 const createUserInfo = (user) => {
@@ -152,8 +156,6 @@ const showContentonLoad = () => {
 export {
     displayPosts,
     displayUsers,
-    createPostCard,
-    createUserCard,
     displaySinglePost,
     displayRelatedLinks,
     displayUserInfo,

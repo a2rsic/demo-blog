@@ -23,7 +23,7 @@ const fetchUsers = () => {
     return fetch(urlUsers)
         .then(response => response.json())
         .then(listOfUsers => {
-            console.log(listOfUsers);
+            console.log("user list", listOfUsers);
 
             const userList = listOfUsers.map(user => {
                 return new User(user.id, user.name, user.username, user.email, user.phone)
@@ -38,8 +38,8 @@ const fetchUser = (id) => {
     return fetch(urlUser)
         .then(response => response.json())
         .then(response => {
-            const { id, name } = response;
-            return new User(id, name)
+            const { id, name, username, email, phone, address, company } = response;
+            return new User(id, name, username, email, phone, address, company)
         })
 
 }
