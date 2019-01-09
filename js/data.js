@@ -38,6 +38,7 @@ const fetchUser = (id) => {
     return fetch(urlUser)
         .then(response => response.json())
         .then(response => {
+            console.log("user response", response);
             const { id, name, username, email, phone, address, company } = response;
             return new User(id, name, username, email, phone, address, company)
         })
@@ -91,8 +92,11 @@ const fetchRelatedLinks = (userId) => {
             const relatedLinks = userArray.map(post => {
                 return new Post(post.id, post.body, post.title, post.userId);
             });
-            const relatedPostId = getPostId()
-            return relatedLinks.filter(post => post.id !== relatedPostId)
+            const post_id = userArray.id
+            const relatedPostId = getPostId();
+            if (post_id !== relatedPostId) {
+                return relatedLinks;
+            }
         })
 
 }

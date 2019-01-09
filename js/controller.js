@@ -6,21 +6,17 @@ import * as ui from "./ui.js";
 const init = () => {
     console.log("ready")
 
-    // $('#navbar-img').on('click', function () {
+    $('#navbar-img').on('click', () => {
 
-    //     $('#js-menu').classList.toggle(
-
-    //         function(){$("#navbar-img").css({"color": "red"});},
-
-    //     );
-    // })
+        $(".navbar-container").classList.toggle("active");
+    })
 
 
     data.fetchPosts()
         .then(postList => {
             ui.hideLoading();
             ui.displayPosts(postList)
-            $(".post-id-div").on('click', onPostClickHandler)
+            $(".post-id-div").on('click', onPostClickHandler);
         })
 }
 
@@ -35,6 +31,8 @@ const onPostClickHandler = (event) => {
 
     const user_id = $(currentTarget).attr("data-user-id");
     data.setUserId(user_id);
+
+    window.location = "./singlePostPage.html"
 
 }
 
@@ -54,6 +52,8 @@ const initAuthorsPage = () => {
                 data.setUserId(user_id)
 
                 console.log("myEvent", event);
+
+                window.location = "./singleAuthorPage.html"
             })
         })
 }
@@ -74,7 +74,16 @@ const initSinglePostPage = () => {
             data.fetchUser(post.userId)
                 .then(userLink => {
                     // console.log("my response", userLink);
-                    ui.displayUserLink(userLink)
+                    ui.displayUserLink(userLink);
+
+                    $("#userLink").on("click", event => {
+                        console.log("user event", event);
+                        const { target } = event;
+
+                        const authorId = $(target).attr("data-user-id")
+                        data.setUserId(authorId);
+                        window.location.href = "./singleAuthorPage.html"
+                    })
                 });
         });
 
@@ -83,7 +92,7 @@ const initSinglePostPage = () => {
     data.fetchRelatedLinks(userId)
         .then(relatedLinks => {
 
-            console.log("related Links", relatedLinks);
+            // console.log("related Links", relatedLinks);
             ui.hideLoading();
             ui.displayRelatedLinks(relatedLinks);
 
@@ -94,7 +103,9 @@ const initSinglePostPage = () => {
                 // const postId = event.currentTarget.attributes[0].value;
                 const postId = $(currentTarget).attr('data-id');
 
-                data.savePostId(postId)
+                data.savePostId(postId);
+
+                window.location = "./singlePostPage.html"
             })
         });
 

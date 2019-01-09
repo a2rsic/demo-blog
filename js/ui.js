@@ -1,5 +1,5 @@
 const $authorsContainer = $(".authors-container");
-const $cardContainer = $(".cardContainer");
+const $cardContainer = $(".post-card-container");
 const $singlePostContainer = $(".single-post-container");
 const $singleAuthorContainer = $(".single-author-container");
 const $relatedLinksContainer = $(".related-links-container");
@@ -16,7 +16,7 @@ const displayPosts = (postList) => {
 
 const createPostCard = (post) => {
     return $(`
-        <a data-id="${post.id}" data-userId="${post.userId}" href="singlePostPage.html" class="post-id-div">
+        <a data-id="${post.id}" data-userId="${post.userId}" class="post-id-div">
             <div>
                 <h3>${post.title}</h3>
                 <p>${post.body}</p>
@@ -38,7 +38,7 @@ const displaySinglePost = (post) => {
 const createSinglePost = (post) => {
     return $(`
             <h1 class="single-post-title">${post.title}</h1>
-            <div class="author-link"></div>
+            <div class="author-link" ></div>
             <p class="single-post-body">${post.body}</p> 
         `)
 }
@@ -51,14 +51,14 @@ const displayUserLink = (userLink) => {
 
 const createUserLink = (user) => {
     return $(`
-        <a data-user-id='${user.id}' id="userLink" href="./singleAuthorPage.html">${user.name}</a>
+        <a data-user-id=${user.id} id="userLink">${user.name}</a>
     `)
 }
 
 const displayRelatedLinks = (relatedLinks) => {
-    $('.related-links-section').removeClass('hidden');
 
     relatedLinks.forEach(post => {
+        $('.related-links-section').removeClass('hidden');
         const relatedLinksHtml = createRelatedLinks(post)
         $relatedLinksContainer.append(relatedLinksHtml)
     })
@@ -66,7 +66,7 @@ const displayRelatedLinks = (relatedLinks) => {
 
 const createRelatedLinks = (post) => {
     return $(`
-        <a data-id="${post.id}" data-userId=${post.userId} href="" class="relatedLinks">
+        <a data-id="${post.id}" data-userId=${post.userId} class="relatedLinks">
         - ${post.title}
         </a>
     `)
@@ -103,7 +103,7 @@ const displayUsers = (userList) => {
 
 const createAuthorCard = (user) => {
     return $(`
-        <a data-user-id=${user.id} class="user-link" href="singleAuthorPage.html"> 
+        <a data-user-id=${user.id} class="user-link"> 
             <div class="div-display-user">
                 <p>${user.name}</p>
             </div>

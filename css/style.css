@@ -48,6 +48,10 @@ footer p {
     padding: 20px;
 }
 
+.main-nav .nav-links:hover {
+    background-color: darkorange;
+}
+
 main {
     width: 80%;
     margin: 0 auto;
@@ -74,10 +78,12 @@ main {
     padding: 20px;
 }
 
-.cardContainer a:hover {
+.post-card-container a:hover {
     box-shadow: 0 4px 8px 0 rosybrown, 0 6px 20px 0 rosybrown;
 
 }
+
+
 
 /* 
 .userLinkDiv {
@@ -99,6 +105,7 @@ main {
     margin: 0 auto;
     color: blue;
     display: block;
+    cursor: pointer;
 }
 
 .relatedLinks:hover {
@@ -127,10 +134,12 @@ a {
     font-size: 20px;
     margin: 20px 0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+    cursor: pointer;
 }
+
 .user-link {
     color: burlywood;
+    cursor: pointer;
 }
 
 .div-display-user {
@@ -197,6 +206,7 @@ li {
 
 
 #userLink {
+    cursor: pointer;
     color: blue;
     display: inline;
 }
@@ -213,11 +223,10 @@ li {
 
 .userInfo {
     width: 80%;
-    margin: 0 auto;
+    margin: 30px auto;
     padding: 20px;
     color: orange;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }
 
 .userInfoParagraph{
@@ -225,6 +234,7 @@ li {
     font-size: 20px;
     
 }
+
 #author-title {
     text-align: center;
     color: orange;
@@ -235,44 +245,44 @@ li {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     color: burlywood;
 
- }
+}
 
- .comment-content {
+.comment-content {
      border-bottom: 1px solid  #e0e0e0;
     /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
     padding: 1em;
- }
+}
 
- .comment-container {
+.comment-container {
     padding: 20px 0;
- }
+}
  
   .comment-list {
      border: 1px solid #e0e0e0;
      overflow: hidden;
      position: relative;
-  }
+}
 
-  .comment-content span {
+.comment-content span {
       position: relative;
       padding-left: 72px;
       text-transform: lowercase;
       color: grey;
-  }
+}
 
-  .comment-content p {
+.comment-content p {
     position: relative;
     left: 72px;
     width: 80%;
-  }
+}
 
-  .comment-content img {
+.comment-content img {
       position: absolute;
       width: 50px;
       height: 50px;
       left: 15px;
       display: inline-block;
-  }
+}
 
  /* .albums-title {
     text-align: center;
