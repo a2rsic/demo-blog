@@ -57,7 +57,7 @@ const createUserLink = (user) => {
 
 const displayRelatedLinks = (relatedLinks, postId) => {
 
-    relatedLinksgit.forEach(post => {
+    relatedLinks.forEach(post => {
         $('.related-links-section').removeClass('hidden');
         const relatedLinksHtml = createRelatedLinks(post)
         $relatedLinksContainer.append(relatedLinksHtml)
@@ -173,5 +173,5 @@ export {
     displayCommentCard,
     hideLoading,
     showContentonLoad,
-    navResponsive
+    // navResponsive
 }

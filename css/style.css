@@ -250,6 +250,10 @@ li {
     display: inline;
 }
 
+#userLink:hover {
+    text-decoration: underline;
+}
+
 .userName{
     background-color: rgb(240, 212, 89);
     padding: 20px;
