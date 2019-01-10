@@ -1,22 +1,23 @@
 const $authorsContainer = $(".authors-container");
-const $cardContainer = $(".post-card-container");
+const $cardContainer = $(".posts-card-container");
 const $singlePostContainer = $(".single-post-container");
 const $singleAuthorContainer = $(".single-author-container");
 const $relatedLinksContainer = $(".related-links-container");
 const $commentList = $(".comment-list");
 
 
-// Home / Post Page
+// Home / Posts Page
 
 const displayPosts = (postList) => {
     postList.forEach(post => {
-        $cardContainer.append(createPostCard(post))
+        const $postsListHtml = createPostCard(post)
+        $cardContainer.append($postsListHtml)
     })
 }
 
 const createPostCard = (post) => {
     return $(`
-        <a data-id="${post.id}" data-userId="${post.userId}" class="post-id-div">
+        <a data-id="${post.id}" data-userId="${post.userId}" class="post-link">
             <div>
                 <h3>${post.title}</h3>
                 <p>${post.body}</p>
@@ -31,8 +32,8 @@ const createPostCard = (post) => {
 const displaySinglePost = (post) => {
     $('.post-container-section').removeClass('hidden');
 
-    const singlePostHtml = createSinglePost(post)
-    $singlePostContainer.append(singlePostHtml);
+    const $singlePostHtml = createSinglePost(post)
+    $singlePostContainer.append($singlePostHtml);
 }
 
 const createSinglePost = (post) => {
@@ -44,29 +45,28 @@ const createSinglePost = (post) => {
 }
 
 const displayUserLink = (userLink) => {
-    console.log(userLink);
-    const authorLinkHtml = createUserLink(userLink)
-    $(".author-link").append(authorLinkHtml)
+    const $authorLinkHtml = createUserLink(userLink)
+    $(".author-link").append($authorLinkHtml)
 }
 
 const createUserLink = (user) => {
     return $(`
-        <a data-user-id=${user.id} id="userLink">${user.name}</a>
+        <a data-user-id=${user.id} id="author-link">${user.name}</a>
     `)
 }
 
-const displayRelatedLinks = (relatedLinks, postId) => {
+const displayRelatedLinks = (relatedLinks) => {
 
     relatedLinks.forEach(post => {
         $('.related-links-section').removeClass('hidden');
-        const relatedLinksHtml = createRelatedLinks(post)
-        $relatedLinksContainer.append(relatedLinksHtml)
+        const $relatedLinksHtml = createRelatedLinks(post)
+        $relatedLinksContainer.append($relatedLinksHtml)
     })
 }
 
 const createRelatedLinks = (post) => {
     return $(`
-        <a data-id="${post.id}" data-userId=${post.userId} class="relatedLinks">
+        <a data-id="${post.id}" data-userId=${post.userId} class="related-posts">
         - ${post.title}
         </a>
     `)
@@ -75,15 +75,15 @@ const createRelatedLinks = (post) => {
 const displayCommentCard = (commentList) => {
     $(".comments-container-section").removeClass("hidden");
     commentList.forEach(comment => {
-        const commentHtml = createCommentCard(comment)
-        $commentList.append(commentHtml);
+        const $commentHtml = createCommentCard(comment)
+        $commentList.append($commentHtml);
     })
 }
 
 const createCommentCard = (comment) => {
     return (`
             <li class="comment-content">
-                <img src="https://t4.ftcdn.net/jpg/01/16/06/45/240_F_116064582_KlXENacGmdt4xl8H6fQRYfSZLntLNKSX.jpg" class="comment-user-picture"/>
+                <img src="./images/user_image.jpg" class="comment-user-picture"/>
                 <span>${comment.email}</span>
                 <p>${comment.body}</p>
             </li>
@@ -96,15 +96,15 @@ const createCommentCard = (comment) => {
 const displayUsers = (userList) => {
     $(".authors-container").removeClass("hidden");
     userList.forEach(user => {
-        const card = createAuthorCard(user)
-        $authorsContainer.append(card);
+        const $userCard = createAuthorCard(user)
+        $authorsContainer.append($userCard);
     })
 }
 
 const createAuthorCard = (user) => {
     return $(`
-        <a data-user-id=${user.id} class="user-link"> 
-            <div class="div-display-user">
+        <a data-user-id=${user.id} class="author-link-list"> 
+            <div class="author-card-container">
                 <p>${user.name}</p>
             </div>
         </a>
@@ -116,27 +116,27 @@ const createAuthorCard = (user) => {
 const displayUserInfo = (user) => {
     $(".single-author-container").removeClass("hidden");
 
-    const userInfoHtml = createUserInfo(user)
-    $singleAuthorContainer.append(userInfoHtml)
+    const $userInfoHtml = createUserInfo(user)
+    $singleAuthorContainer.append($userInfoHtml)
 }
 
 const createUserInfo = (user) => {
     return (`
-        <div class="userInfo">
-            <h2 class="">${user.name}</h2>
-            <p class="userInfoParagraph"><b>Username:</b> ${user.username}</p>
-            <p class="userInfoParagraph"><b>Email:</b> ${user.email}</p>
-            <p class="userInfoParagraph"><b>Phone:</b> ${user.phone}</p>
+        <div class="single-author-info">
+            <h2>${user.name}</h2>
+            <p class="single-author-paragraph"><b>Username:</b> ${user.username}</p>
+            <p class="single-author-paragraph"><b>Email:</b> ${user.email}</p>
+            <p class="single-author-paragraph"><b>Phone:</b> ${user.phone}</p>
         </div>   
-        <div class="userInfo">
+        <div class="single-author-info">
             <h2>Address</h2>
-            <p class="userInfoParagraph"><b>Street:</b> ${user.address.street}</p>
-            <p class="userInfoParagraph"><b>City:</b> ${user.address.city}</p>
+            <p class="single-author-paragraph"><b>Street:</b> ${user.address.street}</p>
+            <p class="single-author-paragraph"><b>City:</b> ${user.address.city}</p>
         </div> 
-        <div class="userInfo">
+        <div class="single-author-info">
             <h2>Company</h2>
-            <p class="userInfoParagraph"><b>Name:</b> ${user.company.name}</p>
-            <p class="userInfoParagraph"><b>Slogan:</b> ${user.company.catchPhrase}</p>
+            <p class="single-author-paragraph"><b>Name:</b> ${user.company.name}</p>
+            <p class="single-author-paragraph"><b>Slogan:</b> ${user.company.catchPhrase}</p>
         </div> 
     `)
 }
@@ -146,21 +146,6 @@ const hideLoading = () => {
     $(".spinner").hide();
 }
 
-const showContentonLoad = () => {
-    $(function () {
-        $('#root').removeClass('hidden');
-    })
-}
-
-const navResponsive = () => {
-
-    const mainNav = document.getElementById('js-menu');
-    const navBarToggle = document.getElementById('js-navbar-toggle');
-
-    navBarToggle.addEventListener('click', () => {
-        mainNav.classList.toggle('active');
-    })
-}
 
 
 export {
@@ -172,6 +157,4 @@ export {
     displayUserLink,
     displayCommentCard,
     hideLoading,
-    showContentonLoad,
-    navResponsive
 }

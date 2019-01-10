@@ -1,14 +1,15 @@
 import Post from "./entities/Post.js";
 import User from "./entities/User.js";
 import Comment from "./entities/Comment.js";
+import { api } from "./shared/API.js";
+import { save, load } from "./shared/storage.js";
+
 
 const fetchPosts = () => {
-    const urlPosts = "https://jsonplaceholder.typicode.com/posts";
-
-    return fetch(urlPosts)
-        .then(response => response.json())
+    const postsPath = "/posts";
+    return api.get(postsPath)
         .then(listOfPosts => {
-            console.log(listOfPosts);
+            // console.log(listOfPosts);
 
             const postList = listOfPosts.map(post => {
                 return new Post(post.id, post.body, post.title, post.userId)
@@ -17,13 +18,13 @@ const fetchPosts = () => {
         })
 }
 
-const fetchUsers = () => {
-    const urlUsers = "https://jsonplaceholder.typicode.com/users";
 
-    return fetch(urlUsers)
-        .then(response => response.json())
+
+const fetchUsers = () => {
+    const usersPath = "/users";
+    return api.get(usersPath)
         .then(listOfUsers => {
-            console.log("user list", listOfUsers);
+            // console.log("user list", listOfUsers);
 
             const userList = listOfUsers.map(user => {
                 return new User(user.id, user.name, user.username, user.email, user.phone)
@@ -33,78 +34,69 @@ const fetchUsers = () => {
 }
 
 const fetchUser = (id) => {
-    const urlUser = "https://jsonplaceholder.typicode.com/users/" + `${id}`;
+    const userPath = `/users/${id}`;
 
-    return fetch(urlUser)
-        .then(response => response.json())
+    return api.get(userPath)
         .then(response => {
-            console.log("user response", response);
+            // console.log(" my user response", response);
             const { id, name, username, email, phone, address, company } = response;
             return new User(id, name, username, email, phone, address, company)
         })
 
 }
 
-const setUserId = (id) => {
-    localStorage.setItem("user-id", id)
-}
-
-const catchUserId = () => {
-    const user_id = localStorage.getItem("user-id");
-
-    return user_id;
+const KEYS = {
+    USER_ID: "user-id",
+    POST_ID: "post-id",
 }
 
 const savePostId = (postId) => {
-    localStorage.setItem("postId", postId)
+    save(KEYS.POST_ID, postId)
 }
 
 const getPostId = () => {
-    const postId = localStorage.getItem("postId");
+    return load(KEYS.POST_ID)
 
-    return postId;
 }
 const fetchPost = (id) => {
-    const urlPost = "https://jsonplaceholder.typicode.com/posts/" + `${id}`;
+    const postPath = `/posts/${id}`;
 
-    return fetch(urlPost)
-        .then(response => response.json())
+    return api.get(postPath)
         .then(response => {
             return response
         })
 }
 
 const saveUserId = (userId) => {
-    localStorage.setItem("userId", userId)
+    save(KEYS.USER_ID, userId)
 }
 
 const getUserId = () => {
-    const userId = localStorage.getItem("userId");
-    return userId;
+    return load(KEYS.USER_ID)
 }
 
 const fetchRelatedLinks = (userId) => {
-    const urlUserId = "https://jsonplaceholder.typicode.com/posts?userId=" + `${userId}`;
+    const userIdPath = `/posts?userId=${userId}`;
 
-    return fetch(urlUserId)
-        .then(response => response.json())
-        .then(userArray => {
-            const relatedLinks = userArray.map(post => {
-                return new Post(post.id, post.body, post.title, post.userId);
-            });
+    return api.get(userIdPath)
+        .then(postsArray => {
             const relatedPostId = getPostId();
-            return relatedLinks.filter(user => {
-                return user.id != relatedPostId
-            })
+            const relatedPosts = postsArray
+                .filter(user => {
+                    return user.id != relatedPostId
+                })
+                .map(post => {
+                    return new Post(post.id, post.body, post.title, post.userId);
+                })
+            return relatedPosts;
         })
 
 }
 
 const fetchComments = (postId) => {
-    const urlComments = "https://jsonplaceholder.typicode.com/comments?postId=" + `${postId}`;
+    const commentsPath = `/comments?postId=${postId}`;
 
-    return fetch(urlComments)
-        .then(response => response.json())
+    return api.get(commentsPath)
         .then(commentsArray => {
             const comment = commentsArray.map(comment => {
                 const { postId, name, body, email } = comment;
@@ -113,11 +105,7 @@ const fetchComments = (postId) => {
             return comment;
         })
 }
-// const checkUserId = () => {
-//     const userIdValue = getUserId();
 
-//     if()
-// }
 
 
 
@@ -131,7 +119,5 @@ export {
     saveUserId,
     getUserId,
     fetchUser,
-    setUserId,
-    catchUserId,
     fetchComments
 }

@@ -15,6 +15,8 @@ html, body {
 
   main {
     flex: 1 0 auto;
+    width: 80%;
+    margin: 0 auto;
   }
 
   footer {
@@ -37,50 +39,8 @@ footer p {
     display: none;
 }
 
-.navbar {
-    font-size: 18px;
-    /* background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%); */
-    /* border: 1px solid rgba(0, 0, 0, 0.2); */
-    padding-bottom: 10px;
-}
+ /* header */
 
-.main-nav {
-    list-style-type: none;
-    display: none;
-}
-
-.nav-links,
-.logo {
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.main-nav li {
-    text-align: center;
-    margin: 15px auto;
-}
-
-.logo {
-    display: inline-block;
-    font-size: 22px;
-    margin-top: 10px;
-    margin-left: 20px;
-}
-
-.navbar-toggle {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    cursor: pointer;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 24px;
-}
-
-.active {
-    display: block;
-}  
-
-    
 .container-fluid {
     width: 100%;
     background-color: orange;
@@ -91,10 +51,40 @@ footer p {
     background-color: darkorange;
 }
 
-main {
-    width: 80%;
-    margin: 0 auto;
+a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
 }
+
+
+/* Home Page */
+
+.posts-card-container a:hover {
+    box-shadow: 0 4px 8px 0 rosybrown, 0 6px 20px 0 rosybrown;
+}
+
+.posts-title {
+    text-align: center;
+    color: darkorange;
+    padding: 20px;
+}
+
+.post-link {
+    display: block;
+    text-decoration: none;
+    color: burlywood;
+    padding: 30px;
+    font-size: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+}
+
+
+/* Single Post Page */
 
 .post-container-section {
     margin: 30px 0;
@@ -107,6 +97,7 @@ main {
     margin: 10px 0;
     font-size: 20px;
 }
+
 .single-post-container h1 {
     text-align: center;
     font-size: 30px;
@@ -115,198 +106,51 @@ main {
 .author-link {
     text-align: center;
     padding: 20px;
-}
-
-.post-card-container a:hover {
-    box-shadow: 0 4px 8px 0 rosybrown, 0 6px 20px 0 rosybrown;
-
-}
-
-
-
-/* 
-.userLinkDiv {
-    order: 0;
     text-align: center;
-    padding: 0.8em;
-} */
-
-
-.singlePostBody {
-    margin: 0 auto;
-    color: orange;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding-top: 20px;
-    font-size: 1.3em;
 }
 
-.relatedLinks {
-    margin: 0 auto;
-    color: blue;
-    display: block;
-    cursor: pointer;
-}
-
-.relatedLinks:hover {
+.author-link a:hover {
     text-decoration: underline;
 }
 
-
-#link-bit-blog {
-    font-size: 28px;
-    display: inline;
-}
-
-a {
-    display: block;
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-    font-size: 20px;
-}
-
-.post-id-div {
-    display: block;
-    text-decoration: none;
-    color: burlywood;
-    padding: 30px;
-    font-size: 20px;
-    margin: 20px 0;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    cursor: pointer;
-}
-
-.user-link {
-    color: burlywood;
-    cursor: pointer;
-}
-
-.div-display-user {
-    padding: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-}
-
-.div-display-user:hover {
-    box-shadow: 0 4px 8px 0 rosybrown, 0 6px 20px 0 rosybrown;
-
-}
-
-.link-hover:hover {
-    background-color: darkorange;
-}
-
-.nav-list {
-    margin-top: 1.1em;
-    float: right!important;
-    display: flex;
-    flex-direction: row;
-}
-
-#link-bit-blog {
-    display: flex;
-    flex-direction: row;
-}
-
-li {
-    list-style-type: none;
-}
-
-.link-hover {
-    display: inline;
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-    font-size: 18px;
-}
-
-.about-title {
-    text-align: center;
-    padding: 20px;
-    color: darkorange;
-}
-
-.index-title {
-    text-align: center;
-    color: darkorange;
-    padding: 20px;
-}
-.authors-title {
-    text-align: center;
-    color: darkorange;
-    padding: 20px;
-}
-
-.userLink {
-    text-align: center;
-    position: relative;
-    margin-top: 20px;
-}
-
-
-#userLink {
+#author-link {
     cursor: pointer;
     color: blue;
     display: inline;
-}
-
-.userName{
-    background-color: rgb(240, 212, 89);
-    padding: 20px;
-    margin: 20px;
-    color: white;
-    font-size: 20px;
-    box-shadow: 6px 6px 31px 5px rgba(179,132,38,1);
-    border-radius: 10px;
-}
-
-.userInfo {
-    width: 80%;
-    margin: 30px auto;
-    padding: 20px;
-    color: orange;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.userInfoParagraph{
-    padding: 10px;
-    font-size: 20px;
-    
-}
-
-#author-title {
     text-align: center;
-    color: orange;
-    padding: 20px;
-}
-  #about-paragraph {
-    padding: 30px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    color: burlywood;
+} 
 
+.related-posts {
+    margin: 0 auto;
+    color: blue;
+    display: block;
+    cursor: pointer;
 }
 
-.comment-content {
-     border-bottom: 1px solid  #e0e0e0;
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-    padding: 1em;
+.related-posts:hover {
+    text-decoration: underline;
 }
 
 .comment-container {
     padding: 20px 0;
 }
- 
-  .comment-list {
-     border: 1px solid #e0e0e0;
-     overflow: hidden;
-     position: relative;
+
+.comment-content {
+    border-bottom: 1px solid  #e0e0e0;
+    padding: 1em;
+}
+
+.comment-list {
+    border: 1px solid #e0e0e0;
+    overflow: hidden;
+    position: relative;
 }
 
 .comment-content span {
-      position: relative;
-      padding-left: 72px;
-      text-transform: lowercase;
-      color: grey;
+    position: relative;
+    padding-left: 72px;
+    text-transform: lowercase;
+    color: grey;
 }
 
 .comment-content p {
@@ -316,18 +160,107 @@ li {
 }
 
 .comment-content img {
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      left: 15px;
-      display: inline-block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 15px;
+    display: inline-block;
 }
 
- /* .albums-title {
+/* Authors Page */
+
+.authors-title {
+    text-align: center;
+    color: darkorange;
+    padding: 20px;
+}
+
+.author-link-list {
+    color: burlywood;
+    cursor: pointer;
+    text-align: start;
+}
+
+.author-card-container {
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.author-card-container:hover {
+    box-shadow: 0 4px 8px 0 rosybrown, 0 6px 20px 0 rosybrown;
+
+}
+
+/* Single Author Page */
+
+#author-title {
     text-align: center;
     color: orange;
     padding: 20px;
- } */
+}
+
+.single-author-info {
+    width: 80%;
+    margin: 30px auto;
+    padding: 20px;
+    color: orange;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.single-author-paragraph{
+    padding: 10px;
+    font-size: 20px;
+    
+}
+
+/* About */
+
+.about-title {
+    text-align: center;
+    padding: 20px;
+    color: darkorange;
+}
+
+#about-paragraph {
+    padding: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: burlywood;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

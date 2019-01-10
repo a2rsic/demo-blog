@@ -3,23 +3,14 @@ import * as ui from "./ui.js";
 
 
 
-const init = () => {
+const initHomePage = () => {
     console.log("ready");
-    ui.navResponsive()
-
-    // const $navDiv = $(".navbar-container");
-
-    // $('#navbar-img').on('click', () => {
-
-    //     $navDiv.classList.classList.toggle("active");
-    // })
-
 
     data.fetchPosts()
         .then(postList => {
             ui.hideLoading();
             ui.displayPosts(postList)
-            $(".post-id-div").on('click', onPostClickHandler);
+            $(".post-link").on('click', onPostClickHandler);
         })
 }
 
@@ -32,10 +23,7 @@ const onPostClickHandler = (event) => {
     const userId = $(currentTarget).attr("data-userId");
     data.saveUserId(userId);
 
-    const user_id = $(currentTarget).attr("data-user-id");
-    data.setUserId(user_id);
-
-    window.location = "./singlePostPage.html"
+    window.location.href = "./singlePostPage.html"
 
 }
 
@@ -45,25 +33,34 @@ const initAuthorsPage = () => {
 
     data.fetchUsers()
         .then(userList => {
+            ui.hideLoading();
             ui.displayUsers(userList);
-            ui.hideLoading()
 
-            $(".user-link").on("click", (event) => {
+            $(".author-link-list").on("click", (event) => {
                 const { currentTarget } = event;
 
-                const user_id = $(currentTarget).attr("data-user-id");
-                data.setUserId(user_id)
+                const userId = $(currentTarget).attr("data-user-id");
+                data.saveUserId(userId)
 
-                console.log("myEvent", event);
+                // console.log("myEvent", event);
 
-                window.location = "./singleAuthorPage.html"
-            })
+                window.location.href = "./singleAuthorPage.html"
+            }
+            )
         })
+}
+
+const onUserClickHandler = (event) => {
+    // console.log("user event", event);
+    const { target } = event;
+
+    const authorId = $(target).attr("data-user-id")
+    data.saveUserId(authorId);
+    window.location.href = "./singleAuthorPage.html"
 }
 
 const initSinglePostPage = () => {
     console.log("ready postPage");
-    // ui.showLoading()
 
     // read LC id value 
 
@@ -79,14 +76,7 @@ const initSinglePostPage = () => {
                     // console.log("my response", userLink);
                     ui.displayUserLink(userLink);
 
-                    $("#userLink").on("click", event => {
-                        console.log("user event", event);
-                        const { target } = event;
-
-                        const authorId = $(target).attr("data-user-id")
-                        data.setUserId(authorId);
-                        window.location.href = "./singleAuthorPage.html"
-                    })
+                    $("#user-link").on("click", onUserClickHandler)
                 });
         });
 
@@ -99,32 +89,21 @@ const initSinglePostPage = () => {
             ui.hideLoading();
             ui.displayRelatedLinks(relatedLinks);
 
-            $(".relatedLinks").on("click", event => {
-                console.log("event", event);
-                const { currentTarget } = event;
-
-                // const postId = event.currentTarget.attributes[0].value;
-                const postId = $(currentTarget).attr('data-id');
-
-                data.savePostId(postId);
-
-                window.location = "./singlePostPage.html"
-            })
+            $(".related-posts").on("click", onPostClickHandler)
         });
 
     data.fetchComments(postId)
         .then(commentList => {
-            ui.displayCommentCard(commentList)
             ui.hideLoading()
-            ui.showContentonLoad()
+            ui.displayCommentCard(commentList)
         });
 }
 
 const initSingleAuthorPage = () => {
     console.log("ready AuthorPage");
 
-    const user_id = data.catchUserId()
-    data.fetchUser(user_id)
+    const authorId = data.getUserId()
+    data.fetchUser(authorId)
         .then(user => {
             // console.log("user info", user);
             ui.hideLoading()
@@ -136,7 +115,7 @@ const initSingleAuthorPage = () => {
 
 
 export {
-    init,
+    initHomePage,
     initAuthorsPage,
     initSinglePostPage,
     initSingleAuthorPage

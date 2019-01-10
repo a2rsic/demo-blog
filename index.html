@@ -15,8 +15,7 @@
     <header class="container-fluid">
         <nav class="navbar">
             <span class="navbar-toggle" id="js-navbar-toggle">
-                <img id="navbar-img" src="https://tysonscore3.azureedge.net/assets/media/tysonretail/images/icons/navigation/buttonnavmobile.ashx"
-                    class="fas fa-bars"></img>
+                <img id="navbar-img" src="/images/menu_image.png"></img>
             </span>
             <a href="./index.html" class="logo">BIT Blog</a>
             <ul class="main-nav" id="menu-list js-menu">
@@ -34,8 +33,8 @@
     </header>
     <main>
         <div class="posts-container">
-            <h1 class="index-title">Posts</h1>
-            <div class="post-card-container"></div>
+            <h1 class="posts-title">Posts</h1>
+            <div class="posts-card-container"></div>
         </div>
         <div class="spinner">
             <div class="rect1"></div>
@@ -58,8 +57,8 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="module">
-        import { init } from "./js/controller.js";
-        $(init);
+        import { initHomePage } from "./js/controller.js";
+        $(initHomePage);
     </script>
 </body>
 
