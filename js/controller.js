@@ -6,6 +6,8 @@ import * as ui from "./ui.js";
 const initHomePage = () => {
     console.log("ready");
 
+
+
     data.fetchPosts()
         .then(postList => {
             ui.hideLoading();
