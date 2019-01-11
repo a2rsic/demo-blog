@@ -67,11 +67,21 @@ const displayRelatedLinks = (relatedLinks) => {
     })
 }
 
+const checkPostTitle = (post) => {
+    const checkTitle = post.title;
+    if (checkTitle.length > 10) {
+        return checkTitle.slice(0, 35).concat("...")
+    }
+}
 const createRelatedLinks = (post) => {
     return $(`
-        <a data-id="${post.id}" data-userId=${post.userId} class="related-posts">
-        - ${post.title}
-        </a>
+    <div class="related-links-wrapper">
+        <img src="${post.photo}"></img>
+        <h3>${checkPostTitle(post)}</h3>
+        <div>
+        <a data-id="${post.id}" data-userId=${post.userId} class="related-posts">Read more</a>
+        </div>
+    </div>
     `)
 }
 

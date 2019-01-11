@@ -25,7 +25,8 @@ const onPostClickHandler = (event) => {
     const userId = $(currentTarget).attr("data-userId");
     data.saveUserId(userId);
 
-    window.location.href = "./singlePostPage.html"
+    window.location.href = "./singlePostPage.html";
+    // location.reload()
 
 }
 

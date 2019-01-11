@@ -22,7 +22,7 @@ const fetchPosts = () => {
 
 const fetchUsers = () => {
     const usersPath = "/users";
-    return api(usersPath)
+    return api.get(usersPath)
         .then(listOfUsers => {
             // console.log("user list", listOfUsers);
 
@@ -87,8 +87,10 @@ const fetchRelatedLinks = (userId) => {
                     return user.id != relatedPostId
                 })
                 .map(post => {
-                    return new Post(post.id, post.body, post.title, post.userId);
+                    const { id, body, title, userId, photo } = post;
+                    return new Post(id, body, title, userId, photo);
                 })
+                .slice(0, 3)
             return relatedPosts;
         })
 
