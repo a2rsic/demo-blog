@@ -92,16 +92,16 @@ a {
     color: burlywood;
 }
 
-.single-post-container p {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding: 40px;
-    margin: 10px 0;
-    font-size: 20px;
-}
-
 .single-post-container h1 {
     text-align: center;
     font-size: 30px;
+}
+
+.single-post-container .single-post-body-wrapper {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 20px;
 }
 
 .author-link {
@@ -119,7 +119,10 @@ a {
     color: blue;
     display: inline;
     text-align: center;
-} 
+}
+ .single-post-body-wrapper img {
+    width: 100%;
+}
 
 .related-posts {
     margin: 0 auto;

@@ -40,7 +40,10 @@ const createSinglePost = (post) => {
     return $(`
             <h1 class="single-post-title">${post.title}</h1>
             <div class="author-link" ></div>
-            <p class="single-post-body">${post.body}</p> 
+            <div class="single-post-body-wrapper">
+            <img src="${post.photo}"></img>
+            <p class="single-post-body">${post.body}</p>
+            </div>
         `)
 }
 

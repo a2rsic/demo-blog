@@ -78,7 +78,7 @@ const initSinglePostPage = () => {
                     // console.log("my response", userLink);
                     ui.displayUserLink(userLink);
 
-                    $("#user-link").on("click", onUserClickHandler)
+                    $("#author-link").on("click", onUserClickHandler)
                 });
         });
 

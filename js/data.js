@@ -9,10 +9,10 @@ const fetchPosts = () => {
     const postsPath = "/posts";
     return api.get(postsPath)
         .then(listOfPosts => {
-            // console.log(listOfPosts);
+            console.log("proba", listOfPosts);
 
             const postList = listOfPosts.map(post => {
-                return new Post(post.id, post.body, post.title, post.userId)
+                return new Post(post.id, post.body, post.title, post.userId, post.photo)
             })
             return postList;
         })
@@ -22,7 +22,7 @@ const fetchPosts = () => {
 
 const fetchUsers = () => {
     const usersPath = "/users";
-    return api.get(usersPath)
+    return api(usersPath)
         .then(listOfUsers => {
             // console.log("user list", listOfUsers);
 
@@ -62,8 +62,9 @@ const fetchPost = (id) => {
     const postPath = `/posts/${id}`;
 
     return api.get(postPath)
-        .then(response => {
-            return response
+        .then(post => {
+            console.log("my postssss", post);
+            return post;
         })
 }
 
